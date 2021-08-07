@@ -1,59 +1,249 @@
-# vue-ts-lib [![Build Status](https://github.com/posva/vue-ts-lib/workflows/test/badge.svg)](https://github.com/posva/vue-ts-lib/actions/workflows/test.yml) [![npm package](https://badgen.net/npm/v/vue-ts-lib)](https://www.npmjs.com/package/vue-ts-lib) [![coverage](https://badgen.net/codecov/c/github/posva/vue-ts-lib/main)](https://codecov.io/github/posva/vue-ts-lib/branch/main) [![thanks](https://badgen.net/badge/thanks/♥/pink)](https://github.com/posva/thanks)
+## vue-timer-hook
 
-> Some awesome description
+Vue timer hook is a custom [vue 3 hook](https://vue.org/docs/hooks-intro.html), built to handle timer, stopwatch, and time logic/state in your vue component.
 
-Demo (TODO link)
+1. `useTimer`: Timers (countdown timer)
+2. `useStopwatch`: Stopwatch (count up timer)
+3. `useTime`: Time (return current time)
 
-## Copying this project
+---
 
-You can directly create a project from this template by using the [Use this template button](https://github.com/posva/vue-ts-lib/generate) if you plan on hosting it on GitHub.
+## Setup
 
-You can also use [degit](https://github.com/Rich-Harris/degit):
+`yarn add vue-timer-hook` OR `npm install vue-timer-hook`
 
-```sh
-degit posva/vue-ts-lib
+---
+
+## `useTimer` - [Demo](https://amrlabib.github.io/vue-timer-hook/)
+
+### Example
+
+```html
+<template>
+    <div>
+        <h1>vue-timer-hook </h1>
+        <p>Timer Demo</p>
+        <div>
+            <span>{{days}}</span>:<span>{{hours}}</span>:<span>{{minutes}}</span>:<span>{{seconds}}</span>
+        </div>
+        <p>{{isRunning ? 'Running' : 'Not running'}}</p>
+        <button @click="start()">Start</button>
+        <button @click="pause()">Pause</button>
+        <button @click="resume()">Resume</button>
+        <button @click="restartFive()">Restart</button>
+    </div>
+</template>
+
+
+<script lang="ts">
+import { defineComponent, watchEffect } from "vue";
+import { useTimer } from 'vue-timer-hook';
+
+export default defineComponent({
+  name: "Home",
+  methods: {
+      restartFive() {
+        // Restarts to 5 minutes timer
+        const time = new Date();
+        time.setSeconds(time.getSeconds() + 300);
+        this.restart(time);
+      }
+  },
+  mounted() {
+    watch(isExpired, (isExpired, isExpiredCount) => {
+        console.warn('IsExpired called :', isExpired.value)
+    });
+})
+  },
+  setup() {
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+    const {
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        isExpired
+        start,
+        pause,
+        resume,
+        restart,
+    } = useTimer({ expiryTimestamp: time});
+    return { 
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        isExpired,
+        start,
+        pause,
+        resume,
+        restart,
+     };
+  },
+});
+</script>
 ```
 
-### Checklist of things to do when creating a lib
+### Settings
 
-#### Rename the project
+| key | Type | Required | Description |
+| --- | --- | --- | ---- |
+| expiryTimestamp | number(timestamp) | YES | this will define for how long the timer will be running   |
+| autoStart | boolean | No | flag to decide if timer should start automatically, by default it is set to `true` |
+| onExpire | Function | No | callback function to be executed once countdown timer is expired |
 
-```sh
-sed -i '' 's/vue-ts-lib/vue-global-events/g' README.md package.json .github/workflows/release-tag.yml size-checks/*
+
+### Values
+
+| key | Type | Description |
+| --- | --- | ---- |
+| seconds | number | seconds value |
+| minutes | number | minutes value |
+| hours | number | hours value |
+| days | number | days value |
+| isRunning | boolean | flag to indicate if timer is running or not |
+| pause | function | function to be called to pause timer |
+| start | function | function if called after pause the timer will continue based on original expiryTimestamp |
+| resume | function | function if called after pause the timer will continue countdown from last paused state |
+| restart | function | function to restart timer with new expiryTimestamp, accept 2 arguments first is the new `expiryTimestamp` of type number(timestamp) and second is `autoStart` of type boolean to decide if it should automatically start after restart or not, default is `true` |
+
+
+---
+
+## `useStopwatch` - [Demo](https://amrlabib.github.io/vue-timer-hook/)
+
+### Example
+
+
+```html
+<template>
+    <div>
+        <h1>vue-timer-hook </h1>
+        <p>Stopwatch Demo</p>
+        <div>
+            <span>{{days}}</span>:<span>{{hours}}</span>:<span>{{minutes}}</span>:<span>{{seconds}}</span>
+        </div>
+        <p>{{isRunning ? 'Running' : 'Not running'}}</p>
+        <button @click="start()">Start</button>
+        <button @click="pause()">Pause</button>
+        <button @click="reset()">Reset</button>
+    </div>
+</template>
+
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useStopwatch } from 'vue-timer-hook';
+
+export default defineComponent({
+  name: "Home",
+  setup() {
+    const {
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        start,
+        pause,
+        reset,
+    } = useStopwatch({ autoStart: true });
+    return { 
+        seconds,
+        minutes,
+        hours,
+        days,
+        isRunning,
+        start,
+        pause,
+        reset,
+     };
+  },
+});
 ```
 
-#### Github CI
+### Settings
 
-- Added by default
+| key | Type | Required | Description |
+| --- | --- | --- | ---- |
+| autoStart | boolean | No | if set to `true` stopwatch will auto start, by default it is set to `false` |
+| offsetTimestamp | number | No | this will define the initial stopwatch offset example: `const stopwatchOffset = new Date(); stopwatchOffset.setSeconds(stopwatchOffset.getSeconds() + 300);` this will result in a 5 minutes offset and stopwatch will start from 0:0:5:0 instead of 0:0:0:0 |
 
-## Renovate
+### Values
 
-You must add the repository in [your settings](https://github.com/settings/installations/112211).
+| key | Type | Description |
+| --- | --- | ---- |
+| seconds | number | seconds value |
+| minutes | number | minutes value |
+| hours | number | hours value |
+| days | number | days value |
+| isRunning | boolean | flag to indicate if stopwatch is running or not |
+| start | function | function to be called to start/resume stopwatch |
+| pause | function | function to be called to pause stopwatch |
+| reset | function | function to be called to reset stopwatch to 0:0:0:0, you can also pass offset parameter to this function to reset stopwatch with offset, similar to how `offsetTimestamp` will offset the initial stopwatch time, this function will accept also a second argument which will decide if stopwatch should automatically start after reset or not default is `true` |
 
-## Remove this section
 
-Remove the section _Checklist_ before releasing.
+---
 
-## Installation
 
-```sh
-yarn add vue-ts-lib
-# or
-npm install vue-ts-lib
+## `useTime` - [Demo](https://amrlabib.github.io/vue-timer-hook/)
+
+### Example
+
+```html
+<template>
+    <div>
+        <h1>vue-timer-hook </h1>
+        <p>Current Time Demo</p>
+        <div>
+            <span>{{hours}}</span>:<span>{{minutes}}</span>:<span>{{seconds}}</span><span>{{ampm}}</span>
+        </div>
+    </div>
+</template>
+
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useTime } from 'vue-timer-hook';
+
+export default defineComponent({
+  name: "Home",
+  setup() {
+    const {
+        seconds,
+        minutes,
+        hours,
+        ampm,
+    } = useTime({ format: '12-hour'});
+    return { 
+        seconds,
+        minutes,
+        hours,
+        ampm,
+     };
+  },
+});
 ```
+### Settings
 
-## Usage
+| key | Type | Required | Description |
+| --- | --- | --- | ---- |
+| format | string | No | if set to `12-hour` time will be formatted with am/pm |
 
-## API
+### Values
 
-## Related
+| key | Type | Description |
+| --- | --- | ---- |
+| seconds | number | seconds value |
+| minutes | number | minutes value |
+| hours | number | hours value |
+| ampm | string | am/pm value if `12-hour` format is used |
 
-## License
 
-[MIT](http://opensource.org/licenses/MIT)
 
-<div align="right">
-<sub><em>
-This project was created using the <a href="https://github.com/posva/vue-ts-lib" rel="nofollow">Vue Library template</a> by <a href="https://github.com/posva" rel="nofollow">posva</a>
-</em></sub>
-</div>
+### Credit
+
+Inspired by [react-timer-hook](https://github.com/amrlabib/react-timer-hook)

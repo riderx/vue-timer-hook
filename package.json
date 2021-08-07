@@ -1,7 +1,7 @@
 {
-  "name": "vue-ts-lib",
+  "name": "vue-timer-hook",
   "version": "0.0.0",
-  "description": "Some awesome description",
+  "description": "Vue timer hook is a vue 3 hook, built to handle timer, stopwatch, and time logic/state in your vue component.",
   "main": "dist/vue-ts-lib.cjs.js",
   "unpkg": "dist/vue-ts-lib.global.js",
   "jsdelivr": "dist/vue-ts-lib.global.js",
@@ -9,8 +9,8 @@
   "types": "dist/vue-ts-lib.d.ts",
   "sideEffects": false,
   "author": {
-    "name": "Eduardo San Martin Morote",
-    "email": "posva13@gmail.com"
+    "name": "Martin Donadieu",
+    "email": "martindonadieu@gmail.com"
   },
   "scripts": {
     "build": "rollup -c rollup.config.js",

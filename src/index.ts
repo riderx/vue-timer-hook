@@ -1,26 +1,5 @@
-import { defineComponent, PropType, h } from 'vue'
+import useTimer from './useTimer'
+import useStopwatch from './useStopwatch'
+import useTime from './useTime'
 
-/**
- * Returns true.
- */
-export function mylib() {
-  return true
-}
-
-export const Component = defineComponent({
-  props: {
-    custom: Boolean as PropType<boolean>,
-    data: {
-      required: true,
-      type: Object as PropType<{ title: string; summary: string }>,
-    },
-  },
-
-  setup(props) {
-    return () =>
-      h(
-        'p',
-        `Custom: ${props.custom}. ${props.data.title} - ${props.data.summary}.`
-      )
-  },
-})
+export { useTimer, useStopwatch, useTime }
