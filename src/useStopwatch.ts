@@ -2,16 +2,13 @@ import { ref } from 'vue'
 import { Time } from './utils'
 import { useInterval } from './hooks'
 
-interface StopwatchOption {
+export interface StopwatchOption {
   autoStart: boolean
   offsetTimestamp: number
 }
 const epochSeconds = () => new Date().getTime()
 
-export default function useStopwatch({
-  autoStart,
-  offsetTimestamp,
-}: StopwatchOption) {
+export function useStopwatch({ autoStart, offsetTimestamp }: StopwatchOption) {
   const passedSeconds = ref(
     Time.getSecondsFromExpiry(offsetTimestamp, true) || 0
   )

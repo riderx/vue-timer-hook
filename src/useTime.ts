@@ -2,10 +2,10 @@ import { ref } from 'vue'
 import { Time } from './utils'
 import { useInterval } from './hooks'
 
-interface TimeOption {
+export interface TimeOption {
   format: string
 }
-export default function useTime({ format }: TimeOption) {
+export function useTime({ format }: TimeOption) {
   const seconds = ref(Time.getSecondsFromTimeNow())
 
   useInterval(() => {

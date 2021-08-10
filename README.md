@@ -14,7 +14,7 @@ Vue timer hook is a custom [vue 3 hook](https://vue.org/docs/hooks-intro.html), 
 
 ---
 
-## `useTimer` - [Demo](https://amrlabib.github.io/vue-timer-hook/)
+## `useTimer` - [Demo](https://riderx.github.io/vue-timer-hook/)
 
 ### Example
 
@@ -36,7 +36,7 @@ Vue timer hook is a custom [vue 3 hook](https://vue.org/docs/hooks-intro.html), 
 
 
 <script lang="ts">
-import { defineComponent, watchEffect } from "vue";
+import { defineComponent, watch } from "vue";
 import { useTimer } from 'vue-timer-hook';
 
 export default defineComponent({
@@ -113,7 +113,7 @@ export default defineComponent({
 
 ---
 
-## `useStopwatch` - [Demo](https://amrlabib.github.io/vue-timer-hook/)
+## `useStopwatch` - [Demo](https://riderx.github.io/vue-timer-hook/)
 
 ### Example
 
@@ -189,7 +189,7 @@ export default defineComponent({
 ---
 
 
-## `useTime` - [Demo](https://amrlabib.github.io/vue-timer-hook/)
+## `useTime` - [Demo](https://riderx.github.io/vue-timer-hook/)
 
 ### Example
 
@@ -246,4 +246,4 @@ export default defineComponent({
 
 ### Credit
 
-Inspired by [react-timer-hook](https://github.com/amrlabib/react-timer-hook)
+Inspired by [react-timer-hook](https://github.com/riderx/react-timer-hook)

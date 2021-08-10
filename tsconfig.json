@@ -1,6 +1,25 @@
 {
   "include": ["src/global.d.ts", "src/**/*.ts", "__tests__/**/*.ts"],
   "compilerOptions": {
+    // "skipLibCheck": true,
+    // "forceConsistentCasingInFileNames": true,
+    // "allowSyntheticDefaultImports": true,
+    // "declaration": true,
+    // "noEmitHelpers": false,
+    // "importHelpers": false,
+
+    // "lib": [
+    //   "dom",
+    //   "dom.iterable",
+    //   "esnext"
+    // ],
+    // "module": "es2015",
+    // "noUnusedLocals": false,
+    // "noUnusedParameters": false,
+    // "outDir": "dist",
+    // "sourceMap": true,
+    // "target": "es2015",
+
     "baseUrl": ".",
     "rootDir": ".",
     "outDir": "dist",

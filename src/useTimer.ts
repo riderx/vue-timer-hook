@@ -14,12 +14,12 @@ function getDelayFromExpiryTimestamp(expiryTimestamp: number) {
   return extraMilliSeconds > 0 ? extraMilliSeconds : DEFAULT_DELAY
 }
 
-interface TimerOption {
+export interface TimerOption {
   expiryTimestamp: number
   autoStart: boolean
 }
 
-export default function useTimer({
+export function useTimer({
   expiryTimestamp: expiry,
   autoStart = true,
 }: TimerOption) {
