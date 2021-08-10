@@ -1,6 +1,6 @@
 {
   "name": "vue-timer-hook",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue timer hook is a vue 3 hook, built to handle timer, stopwatch, and time logic/state in your vue component.",
   "main": "dist/vue-ts-lib.cjs.js",
   "unpkg": "dist/vue-ts-lib.global.js",
