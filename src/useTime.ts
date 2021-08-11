@@ -5,7 +5,7 @@ import { useInterval } from './hooks'
 export interface TimeOption {
   format: string
 }
-export function useTime({ format }: TimeOption) {
+export const useTime = ({ format }: TimeOption) => {
   const seconds = ref(Time.getSecondsFromTimeNow())
 
   useInterval(() => {

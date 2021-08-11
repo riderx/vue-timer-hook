@@ -8,7 +8,10 @@ export interface StopwatchOption {
 }
 const epochSeconds = () => new Date().getTime()
 
-export function useStopwatch({ autoStart, offsetTimestamp }: StopwatchOption) {
+export const useStopwatch = ({
+  autoStart,
+  offsetTimestamp,
+}: StopwatchOption) => {
   const passedSeconds = ref(
     Time.getSecondsFromExpiry(offsetTimestamp, true) || 0
   )

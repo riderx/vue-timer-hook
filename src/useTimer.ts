@@ -19,10 +19,10 @@ export interface TimerOption {
   autoStart: boolean
 }
 
-export function useTimer({
+export const useTimer = ({
   expiryTimestamp: expiry,
   autoStart = true,
-}: TimerOption) {
+}: TimerOption) => {
   const expiryTimestamp = ref(expiry)
   const seconds = ref(Time.getSecondsFromExpiry(expiryTimestamp.value))
   const isRunning = ref(autoStart)
