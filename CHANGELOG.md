@@ -1,3 +1,9 @@
+## [0.0.8](https://github.com/riderx/vue-timer-hook/compare/v0.0.7...v0.0.8) (2021-08-12)
+
+### Features
+
+- rewrite from new template ([9e88339](https://github.com/riderx/vue-timer-hook/commit/9e8833913c29ddbc263e2e4b1e3509df2647b74d))
+
 ## [0.0.7](https://github.com/riderx/vue-timer-hook/compare/v0.0.6...v0.0.7) (2021-08-11)
 
 ## [0.0.6](https://github.com/riderx/vue-timer-hook/compare/v0.4.2...v0.0.6) (2021-08-11)
