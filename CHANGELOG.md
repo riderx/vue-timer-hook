@@ -1,3 +1,9 @@
+## [0.0.13](https://github.com/riderx/vue-timer-hook/compare/v0.0.12...v0.0.13) (2021-08-16)
+
+### Bug Fixes
+
+- tag target + donation ([2886dd7](https://github.com/riderx/vue-timer-hook/commit/2886dd7c3e01da3f354c492dcb12fd17c3807f29))
+
 ## [0.0.12](https://github.com/riderx/vue-timer-hook/compare/v0.0.11...v0.0.12) (2021-08-16)
 
 ### Bug Fixes
