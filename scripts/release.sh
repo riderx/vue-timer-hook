@@ -1,8 +1,7 @@
 set -e
 echo "Current version:" $(grep version package.json | sed -E 's/^.*"([0-9][^"]+)".*$/\1/')
-echo "Enter version e.g., 1.0.2: "
+echo "Enter version e.g., 4.0.1: "
 read VERSION
-
 
 read -p "Releasing v$VERSION - are you sure? (y/n)" -n 1 -r
 echo    # (optional) move to a new line
@@ -10,13 +9,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
   echo "Releasing v$VERSION ..."
 
-  # generate the version so that the changelog can be generated too and included
-  # in the release
+  # clear existing ts cache
+  rm -rf node_modules/.rts2_cache
+
+  # generate the version so that the changelog can be generated too
   yarn version --no-git-tag-version --no-commit-hooks --new-version $VERSION
 
-  # clear existing ts cache
-  rm -rf dist node_modules/.rts2_cache
-  yarn run build-all
+  yarn run build
+  yarn run build:dts
+  yarn run test:dts
 
   # changelog
   yarn run changelog
@@ -30,8 +31,7 @@ then
   git tag "v$VERSION"
 
   # commit
-  # use --tag next to publish to a different tag
-  yarn publish --new-version "$VERSION" --no-commit-hooks --no-git-tag-version
+  yarn publish --tag next --new-version "$VERSION" --no-commit-hooks --no-git-tag-version
 
   # publish
   git push origin refs/tags/v$VERSION
