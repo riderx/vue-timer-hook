@@ -1,18 +1,19 @@
-import { Ref, ref } from 'vue'
+import { Ref, ref, toRefs } from 'vue'
 import { Time } from './utils'
 import { useInterval } from './hooks'
+import { Interval } from './hooks/useInterval'
 
 export interface StopwatchOption {
-  autoStart: boolean
-  offsetTimestamp: number
+  autoStart: boolean;
+  offsetTimestamp: number;
 }
 const epochSeconds = () => new Date().getTime()
 
-export interface UseStopwatch {
-  seconds: number;
-  minutes: number;
-  hours: number;
-  days: number;
+export interface ResUseStopwatch {
+  seconds: Ref<number>;
+  minutes: Ref<number>;
+  hours: Ref<number>;
+  days: Ref<number>;
   start(): void;
   pause(): void;
   reset(offset: number, newAutoStart: boolean): void;
@@ -21,49 +22,48 @@ export interface UseStopwatch {
 
 export const useStopwatch = (
   autoStart = true,
-  offsetTimestamp: number): UseStopwatch => {
+  offsetTimestamp: number): ResUseStopwatch => {
+  let interval: Interval;
   const passedSeconds = ref(
     Time.getSecondsFromExpiry(offsetTimestamp, true) || 0
   )
   const prevTime = ref(epochSeconds())
   const seconds = ref(
-    passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value || 0, true)
+    passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value || 0, true).value
   )
   const isRunning = ref(autoStart)
 
-  useInterval(
-    () => {
-      seconds.value =
-        passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value, true)
-    },
-    isRunning.value ? 1000 : false
-  )
+
 
   function start() {
     const newPrevTime = epochSeconds()
     prevTime.value = newPrevTime
     isRunning.value = true
     seconds.value =
-      passedSeconds.value + Time.getSecondsFromPrevTime(newPrevTime, true)
+      passedSeconds.value + Time.getSecondsFromPrevTime(newPrevTime, true).value
+    interval = useInterval(
+        () => {
+          seconds.value =
+            passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value, true).value
+        },
+        isRunning.value ? 1000 : false
+      )
   }
 
   function pause() {
     passedSeconds.value = seconds.value
     isRunning.value = false
+    if (interval) interval.remove();
   }
 
   function reset(offset = 0, newAutoStart = true) {
-    const newPassedSeconds = Time.getSecondsFromExpiry(offset, true) || 0
-    const newPrevTime = epochSeconds()
-    prevTime.value = newPrevTime
-    passedSeconds.value = newPassedSeconds
     isRunning.value = newAutoStart
-    seconds.value =
-      newPassedSeconds + Time.getSecondsFromPrevTime(newPrevTime, true)
+    passedSeconds.value  = Time.getSecondsFromExpiry(offset, true).value || 0
+    start()
   }
 
   return {
-    ...Time.getTimeFromSeconds(seconds.value),
+    ...Time.getTimeFromSeconds(seconds),
     start,
     pause,
     reset,

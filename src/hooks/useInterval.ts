@@ -2,27 +2,24 @@ import { onUnmounted } from 'vue'
 
 const isNumber = (val: unknown): val is number => typeof val === 'number'
 
-export interface UseIntervalReturn<TArgs extends Array<any> = []> {
-  start(ms: number, ...args: TArgs): number
-
-  remove(): void
+export interface Interval {
+  remove: () => void;
+  start: (_ms?: number | undefined) => NodeJS.Timeout | undefined;
 }
 
-// export interface UseIntervalReturnMs {
-//   start(): number;
-// }
-
-// export interface UseIntervalReturnArgs<TArgs extends Array<any>> {
-//   start(_: undefined, ...args: TArgs): number;
-// }
-
-export function useInterval<TArgs extends Array<any>>(
-  callback: (...args: TArgs) => void,
+export function useInterval(
+  callback: () => void,
   ms?: number | boolean | null
-): UseIntervalReturn<TArgs> {
-  let intervalId: number | undefined = undefined
+): Interval {
+  let intervalId: NodeJS.Timeout | undefined = undefined
 
-  const start = (_ms?: number, ..._args: any[]) => {
+  const remove = () => {
+    if (!intervalId) return
+    clearInterval(intervalId)
+    intervalId = undefined
+  }
+
+  const start = (_ms?: number) => {
     remove()
     if (!_ms && !ms) {
       return
@@ -31,14 +28,7 @@ export function useInterval<TArgs extends Array<any>>(
     return (intervalId = setInterval(
       callback,
       m
-      // ...(_args && _args.length ? _args : args)
-    ) as any)
-  }
-
-  const remove = () => {
-    if (!intervalId) return
-    clearInterval(intervalId)
-    intervalId = undefined
+    ))
   }
 
   if (isNumber(ms)) {
