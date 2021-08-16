@@ -1,3 +1,14 @@
+## [0.0.14](https://github.com/riderx/vue-timer-hook/compare/v0.0.13...v0.0.14) (2021-08-16)
+
+### Bug Fixes
+
+- base url in vite config ([809b40d](https://github.com/riderx/vue-timer-hook/commit/809b40d5f010696b8a801bc92af248e85dc54a7f))
+- ignore add in dist ([d822cea](https://github.com/riderx/vue-timer-hook/commit/d822cea92c255a55f1297dc6ca0c730af9a1dfc6))
+
+### Features
+
+- add demo ([3177d9b](https://github.com/riderx/vue-timer-hook/commit/3177d9b1705721fe1235ac6ba8878ee5947537e1))
+
 ## [0.0.13](https://github.com/riderx/vue-timer-hook/compare/v0.0.12...v0.0.13) (2021-08-16)
 
 ### Bug Fixes
