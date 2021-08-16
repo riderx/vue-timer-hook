@@ -58,6 +58,7 @@ export const useStopwatch = (
     start()
   }
 
+  start()
   return {
     ...Time.getTimeFromSeconds(seconds),
     start,
