@@ -6,6 +6,7 @@ import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   root: resolve(process.cwd(), 'demo'),
+  base: '/vue-timer-hook/',
   build: {
     outDir: '../demo_dist',
     rollupOptions: {
