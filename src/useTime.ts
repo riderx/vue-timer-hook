@@ -1,6 +1,6 @@
 import { Time } from './utils'
 import { useInterval } from './hooks'
-import { toRefs, Ref } from 'vue'
+import { Ref } from 'vue'
 
 export interface TimeOption {
   format: '12-hour' | '24-hour';

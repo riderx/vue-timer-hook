@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { reactive, toRef, toRefs, Ref } from 'vue'
+import { reactive, toRef, Ref } from 'vue'
 import { Time, Validate } from './utils'
 import { useInterval } from './hooks'
 import { Interval } from './hooks/useInterval';

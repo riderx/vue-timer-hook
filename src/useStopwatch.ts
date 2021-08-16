@@ -1,4 +1,4 @@
-import { Ref, ref, toRefs } from 'vue'
+import { Ref, ref } from 'vue'
 import { Time } from './utils'
 import { useInterval } from './hooks'
 import { Interval } from './hooks/useInterval'
