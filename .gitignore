@@ -19,3 +19,4 @@ selenium-server.log
 browserstack.err
 .idea
 debug.log
+demo_dist
