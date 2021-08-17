@@ -53,6 +53,7 @@ export const useStopwatch = (
   }
 
   function reset(offset = 0, newAutoStart = true) {
+    pause()
     isRunning.value = newAutoStart
     passedSeconds.value = Time.getSecondsFromExpiry(offset, true).value || 0
     start()

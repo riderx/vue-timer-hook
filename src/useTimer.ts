@@ -53,6 +53,7 @@ export const useTimer = (expiry = 60, autoStart = true): UseTimer => {
   }
 
   function restart(newExpiryTimestamp: number = expiry, newAutoStart = true) {
+    pause()
     state.delay = getDelayFromExpiryTimestamp(newExpiryTimestamp)
     state.didStart = newAutoStart
     state.isExpired = false
