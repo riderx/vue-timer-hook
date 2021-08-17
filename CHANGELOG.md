@@ -1,3 +1,9 @@
+## [0.0.15](https://github.com/riderx/vue-timer-hook/compare/v0.0.14...v0.0.15) (2021-08-17)
+
+### Bug Fixes
+
+- make restart and reset pause before start ([6c2c08d](https://github.com/riderx/vue-timer-hook/commit/6c2c08d9109307566dcbbdbb2c7fc59468a501ec))
+
 ## [0.0.14](https://github.com/riderx/vue-timer-hook/compare/v0.0.13...v0.0.14) (2021-08-16)
 
 ### Bug Fixes
