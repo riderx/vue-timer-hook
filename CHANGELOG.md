@@ -1,3 +1,9 @@
+## [0.0.17](https://github.com/riderx/vue-timer-hook/compare/v0.0.16...v0.0.17) (2021-08-17)
+
+### Bug Fixes
+
+- readme demo code ([e570fd2](https://github.com/riderx/vue-timer-hook/commit/e570fd2a8dca2e66d1043c1e5ac5bde9089a5186))
+
 ## [0.0.16](https://github.com/riderx/vue-timer-hook/compare/v0.0.15...v0.0.16) (2021-08-17)
 
 ### Bug Fixes
