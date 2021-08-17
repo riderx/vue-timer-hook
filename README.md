@@ -24,12 +24,12 @@ Vue timer hook is a custom [vue 3 hook](https://vue.org/docs/hooks-intro.html), 
         <h1>vue-timer-hook </h1>
         <p>Timer Demo</p>
         <div>
-            <span>{{days}}</span>:<span>{{hours}}</span>:<span>{{minutes}}</span>:<span>{{seconds}}</span>
+            <span>{{timer.days}}</span>:<span>{{timer.hours}}</span>:<span>{{timer.minutes}}</span>:<span>{{timer.seconds}}</span>
         </div>
-        <p>{{isRunning ? 'Running' : 'Not running'}}</p>
-        <button @click="start()">Start</button>
-        <button @click="pause()">Pause</button>
-        <button @click="resume()">Resume</button>
+        <p>{{timer.isRunning ? 'Running' : 'Not running'}}</p>
+        <button @click="timer.start()">Start</button>
+        <button @click="timer.pause()">Pause</button>
+        <button @click="timer.resume()">Resume</button>
         <button @click="restartFive()">Restart</button>
     </div>
 </template>
@@ -50,37 +50,16 @@ export default defineComponent({
       }
   },
   mounted() {
-    watch(isExpired, (isExpired, isExpiredCount) => {
-        console.warn('IsExpired called :', isExpired.value)
+    watch(timer.isExpired, (isExpired, isExpiredCount) => {
+        console.warn('IsExpired called :', timer.isExpired.value)
     });
-})
   },
   setup() {
     const time = new Date();
     time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
-    const {
-        seconds,
-        minutes,
-        hours,
-        days,
-        isRunning,
-        isExpired
-        start,
-        pause,
-        resume,
-        restart,
-    } = useTimer({ expiryTimestamp: time});
+    const timer = useTimer(time);
     return {
-        seconds,
-        minutes,
-        hours,
-        days,
-        isRunning,
-        isExpired,
-        start,
-        pause,
-        resume,
-        restart,
+        timer,
      };
   },
 });
@@ -123,12 +102,12 @@ export default defineComponent({
         <h1>vue-timer-hook </h1>
         <p>Stopwatch Demo</p>
         <div>
-            <span>{{days}}</span>:<span>{{hours}}</span>:<span>{{minutes}}</span>:<span>{{seconds}}</span>
+            <span>{{stopwatch.days}}</span>:<span>{{stopwatch.hours}}</span>:<span>{{stopwatch.minutes}}</span>:<span>{{stopwatch.seconds}}</span>
         </div>
-        <p>{{isRunning ? 'Running' : 'Not running'}}</p>
-        <button @click="start()">Start</button>
-        <button @click="pause()">Pause</button>
-        <button @click="reset()">Reset</button>
+        <p>{{stopwatch.isRunning ? 'Running' : 'Not running'}}</p>
+        <button @click="stopwatch.start()">Start</button>
+        <button @click="stopwatch.pause()">Pause</button>
+        <button @click="stopwatch.reset()">Reset</button>
     </div>
 </template>
 
@@ -141,28 +120,13 @@ export default defineComponent({
   name: "Home",
   setup() {
     const autoStart = true;
-    const {
-        seconds,
-        minutes,
-        hours,
-        days,
-        isRunning,
-        start,
-        pause,
-        reset,
-    } = useStopwatch(autoStart);
+    const stopwatch = useStopwatch(autoStart);
     return {
-        seconds,
-        minutes,
-        hours,
-        days,
-        isRunning,
-        start,
-        pause,
-        reset,
+        stopwatch,
      };
   },
 });
+</script>
 ```
 
 ### Settings
@@ -199,7 +163,7 @@ export default defineComponent({
         <h1>vue-timer-hook </h1>
         <p>Current Time Demo</p>
         <div>
-            <span>{{hours}}</span>:<span>{{minutes}}</span>:<span>{{seconds}}</span><span>{{ampm}}</span>
+            <span>{{time.hours}}</span>:<span>{{time.minutes}}</span>:<span>{{time.seconds}}</span><span>{{time.ampm}}</span>
         </div>
     </div>
 </template>
@@ -213,20 +177,13 @@ export default defineComponent({
   name: "Home",
   setup() {
     const format = '12-hour'
-    const {
-        seconds,
-        minutes,
-        hours,
-        ampm,
-    } = useTime(format);
+    const time = useTime(format);
     return {
-        seconds,
-        minutes,
-        hours,
-        ampm,
+        time,
      };
   },
 });
+</script>
 ```
 ### Settings
 
