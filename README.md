@@ -36,7 +36,7 @@ Vue timer hook is a custom [vue 3 hook](https://vue.org/docs/hooks-intro.html), 
 
 
 <script lang="ts">
-import { defineComponent, watch } from "vue";
+import { defineComponent, watchEffect } from "vue";
 import { useTimer } from 'vue-timer-hook';
 
 export default defineComponent({
@@ -46,13 +46,15 @@ export default defineComponent({
         // Restarts to 5 minutes timer
         const time = new Date();
         time.setSeconds(time.getSeconds() + 300);
-        this.restart(time);
+        this.timer.restart(time);
       }
   },
   mounted() {
-    watch(timer.isExpired, (isExpired, isExpiredCount) => {
-        console.warn('IsExpired called :', timer.isExpired.value)
-    });
+    watchEffect(() => {
+        if(this.timer.isExpired.value) {
+            console.warn('IsExpired')
+        }
+    })
   },
   setup() {
     const time = new Date();
