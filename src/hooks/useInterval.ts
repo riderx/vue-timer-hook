@@ -1,10 +1,8 @@
-import { onUnmounted } from 'vue'
-
 const isNumber = (val: unknown): val is number => typeof val === 'number'
 
 export interface Interval {
-  remove: () => void;
-  start: (_ms?: number | undefined) => NodeJS.Timeout | undefined;
+  remove: () => void
+  start: (_ms?: number | undefined) => NodeJS.Timeout | undefined
 }
 
 export function useInterval(
@@ -25,16 +23,12 @@ export function useInterval(
       return
     }
     const m = (_ms || ms) as number
-    return (intervalId = setInterval(
-      callback,
-      m
-    ))
+    return (intervalId = setInterval(callback, m))
   }
 
   if (isNumber(ms)) {
     start()
   }
 
-  onUnmounted(remove)
   return { remove, start }
 }
