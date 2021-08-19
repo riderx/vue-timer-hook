@@ -1,3 +1,9 @@
+## [0.0.18](https://github.com/riderx/vue-timer-hook/compare/v0.0.17...v0.0.18) (2021-08-19)
+
+### Bug Fixes
+
+- remove not used onUnmount ([4cd5cb2](https://github.com/riderx/vue-timer-hook/commit/4cd5cb21fdff0b07c956a41abdec21808d5d8933))
+
 ## [0.0.17](https://github.com/riderx/vue-timer-hook/compare/v0.0.16...v0.0.17) (2021-08-17)
 
 ### Bug Fixes
