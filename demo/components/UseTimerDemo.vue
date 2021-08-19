@@ -29,19 +29,18 @@ export default defineComponent({
       required: true
     },
   },
-  methods: {
-    reload() {
+  setup(props) {
+    const { expiryTimestamp } = props
+    const timer = useTimer(expiryTimestamp)
+    const reload = () => {
       // Restarts to 10 minutes timer
       const time = new Date();
       time.setSeconds(time.getSeconds() + 600);
       this.timer.restart(time);
     }
-  },
-  setup(props) {
-    const { expiryTimestamp } = props
-    const timer = useTimer(expiryTimestamp)
     return {
-      timer
+      timer,
+      reload
     }
   },
 })
