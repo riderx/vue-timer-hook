@@ -59,7 +59,7 @@ export const useTimer = (expiry = 60, autoStart = true): UseTimer => {
     state.isExpired = false
     state.expiryTimestamp = newExpiryTimestamp
     state.seconds = Time.getSecondsFromExpiry(newExpiryTimestamp).value
-    start()
+    if (state.didStart) start()
   }
 
   function resume() {

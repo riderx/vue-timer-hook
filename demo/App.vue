@@ -16,6 +16,7 @@
         Vue timer hook is a custom  <a href="https://v3.vuejs.org/guide/composition-api-introduction.html" target="_blank">composition api</a> module built to handle timer, stopwatch, and time logic/state in your vue component.
       </p>
       <UseTimerDemo :expiryTimestamp="time" />
+      <UseTimerWaitStartDemo :expiryTimestamp="time" />
       <div class="separator" />
       <UseStopwatchDemo />
       <div class="separator" />
@@ -28,11 +29,12 @@
 import { defineComponent } from 'vue'
 import UseTimeDemo from './components/UseTimeDemo.vue'
 import UseTimerDemo from './components/UseTimerDemo.vue'
+import UseTimerWaitStartDemo from './components/UseTimerWaitStartDemo.vue'
 import UseStopwatchDemo from './components/UseStopwatchDemo.vue'
 
 export default defineComponent({
   name: 'App',
-  components: { UseTimerDemo, UseStopwatchDemo, UseTimeDemo },
+  components: { UseTimerDemo, UseTimerWaitStartDemo, UseStopwatchDemo, UseTimeDemo },
   data() {
     return {
       time: new Date().setSeconds(new Date().getSeconds() + 600)
