@@ -1,3 +1,14 @@
+## [0.0.20](https://github.com/riderx/vue-timer-hook/compare/v0.0.19...v0.0.20) (2021-08-23)
+
+### Bug Fixes
+
+- remove unused dep ([ddca8ff](https://github.com/riderx/vue-timer-hook/commit/ddca8ff46246edf3cc1b5a96b97ad20bf1d682d4))
+- stopwatch 100% test work ([127e646](https://github.com/riderx/vue-timer-hook/commit/127e6465f95382270724befd0a19ae37177a1698))
+
+### Features
+
+- update vite ([11ee604](https://github.com/riderx/vue-timer-hook/commit/11ee604e1e83d7402641c4327131452068ce0c5c))
+
 ## [0.0.19](https://github.com/riderx/vue-timer-hook/compare/v0.0.18...v0.0.19) (2021-08-23)
 
 ### Bug Fixes
