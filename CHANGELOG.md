@@ -1,3 +1,9 @@
+## [0.0.19](https://github.com/riderx/vue-timer-hook/compare/v0.0.18...v0.0.19) (2021-08-23)
+
+### Bug Fixes
+
+- usertimer when auto start is false ([aa5a780](https://github.com/riderx/vue-timer-hook/commit/aa5a780c8c2fcad043972d49abbe3e9663011a90))
+
 ## [0.0.18](https://github.com/riderx/vue-timer-hook/compare/v0.0.17...v0.0.18) (2021-08-19)
 
 ### Bug Fixes
