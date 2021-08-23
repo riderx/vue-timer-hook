@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>UseTimer Demo (wait click to start)</h2>
+      <h2>UseTimer Demo ( autostart=false )</h2>
       <Timer :seconds="timer.seconds" :minutes="timer.minutes" :hours="timer.hours" :days="timer.days" />
       <Button type="button" @click="timer.start()">Start</Button>
       <Button type="button" @click="timer.pause()">Pause</Button>

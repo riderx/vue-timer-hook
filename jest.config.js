@@ -11,7 +11,9 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '/node_modules/',
     'src/index.ts',
-    'src/entries',
+    'src/utils/index.ts',
+    'src/hooks/index.ts',
+    'src/global.d.ts',
     'src/devtools.ts',
   ],
   transform: {
