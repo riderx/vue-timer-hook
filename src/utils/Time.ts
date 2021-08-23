@@ -1,4 +1,4 @@
-import { Ref, computed, ref } from 'vue'
+import { Ref, computed } from 'vue'
 
 interface TimeAmpm {
   seconds: Ref<number>
