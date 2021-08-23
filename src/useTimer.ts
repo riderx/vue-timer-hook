@@ -11,9 +11,7 @@ function getDelayFromExpiryTimestamp(expiryTimestamp: number) {
   }
 
   const seconds = Time.getSecondsFromExpiry(expiryTimestamp)
-  const extraMilliSeconds = Math.floor(
-    (seconds.value - Math.floor(seconds.value)) * 1000
-  )
+  const extraMilliSeconds = Math.floor((seconds - Math.floor(seconds)) * 1000)
   return extraMilliSeconds > 0 ? extraMilliSeconds : DEFAULT_DELAY
 }
 export interface UseTimer {
@@ -58,7 +56,7 @@ export const useTimer = (expiry = 60, autoStart = true): UseTimer => {
     state.didStart = newAutoStart
     state.isExpired = false
     state.expiryTimestamp = newExpiryTimestamp
-    state.seconds = Time.getSecondsFromExpiry(newExpiryTimestamp).value
+    state.seconds = Time.getSecondsFromExpiry(newExpiryTimestamp)
     if (state.didStart) start()
   }
 
@@ -72,7 +70,7 @@ export const useTimer = (expiry = 60, autoStart = true): UseTimer => {
 
   function start() {
     if (state.didStart) {
-      state.seconds = Time.getSecondsFromExpiry(state.expiryTimestamp).value
+      state.seconds = Time.getSecondsFromExpiry(state.expiryTimestamp)
       state.isRunning = true
       interval = useInterval(
         () => {
@@ -80,8 +78,8 @@ export const useTimer = (expiry = 60, autoStart = true): UseTimer => {
             state.delay = DEFAULT_DELAY
           }
           const secondsValue = Time.getSecondsFromExpiry(state.expiryTimestamp)
-          state.seconds = secondsValue.value
-          if (secondsValue.value <= 0) {
+          state.seconds = secondsValue
+          if (secondsValue <= 0) {
             _handleExpire()
           }
         },

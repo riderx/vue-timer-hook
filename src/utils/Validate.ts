@@ -9,15 +9,4 @@ export default class Validate {
     }
     return isValid
   }
-
-  static onExpire(onExpire: () => void): boolean {
-    const isValid = onExpire && typeof onExpire === 'function'
-    if (onExpire && !isValid) {
-      console.warn(
-        'vue-timer-hook: { useTimer } Invalid onExpire settings function',
-        onExpire
-      ) // eslint-disable-line
-    }
-    return isValid
-  }
 }

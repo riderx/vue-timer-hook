@@ -20,27 +20,24 @@ export const useStopwatch = (
   autoStart: boolean = true
 ): ResUseStopwatch => {
   let interval: Interval
-  const passedSeconds = ref(
-    Time.getSecondsFromExpiry(offsetTimestamp, true) || 0
-  )
+  const passedSeconds = ref(offsetTimestamp)
+
   const prevTime = ref(epochSeconds())
   const seconds = ref(
-    passedSeconds.value +
-      Time.getSecondsFromPrevTime(prevTime.value || 0, true).value
+    passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value || 0, true)
   )
   const isRunning = ref(autoStart)
 
   function start() {
-    const newPrevTime = epochSeconds()
-    prevTime.value = newPrevTime
+    prevTime.value = epochSeconds()
     isRunning.value = true
     seconds.value =
-      passedSeconds.value + Time.getSecondsFromPrevTime(newPrevTime, true).value
+      passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value, true)
     interval = useInterval(
       () => {
         seconds.value =
           passedSeconds.value +
-          Time.getSecondsFromPrevTime(prevTime.value, true).value
+          Time.getSecondsFromPrevTime(prevTime.value, true)
       },
       isRunning.value ? 1000 : false
     )
@@ -55,11 +52,13 @@ export const useStopwatch = (
   function reset(offset = 0, newAutoStart = true) {
     pause()
     isRunning.value = newAutoStart
-    passedSeconds.value = Time.getSecondsFromExpiry(offset, true).value || 0
-    start()
+    passedSeconds.value = offset
+    seconds.value = +passedSeconds.value
+    Time.getSecondsFromPrevTime(prevTime.value, true)
+    if (isRunning.value) start()
   }
 
-  start()
+  if (isRunning.value) start()
   return {
     ...Time.getTimeFromSeconds(seconds),
     start,
