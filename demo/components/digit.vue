@@ -12,30 +12,22 @@
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { defineProps, computed} from 'vue'
 
-export default defineComponent({
-    name: 'Digit',
-    props: {
-        digit: {
-            type: Object,
-            required: true
-        },
-        title: {
-            type: String,
-            required: false
-        }
+const props = defineProps({
+    digit: {
+        type: Number,
+        require: true,
     },
-    computed: {
-        leftDigit() {
-            return this.digit.value >= 10 ? this.digit.value.toString()[0] : '0'
-        },
-        rightDigit() {
-            return this.digit.value >= 10 ? this.digit.value.toString()[1] : this.digit.value.toString()
-        },
-    },
-})
+    title: {
+        type: String,
+        require: false,
+    }
+});
+const leftDigit = computed(() => props.digit.value >= 10 ? props.digit.value.toString()[0] : '0')
+const rightDigit = computed(() => props.digit.value >= 10 ? props.digit.value.toString()[1] : props.digit.value.toString())
+
 </script>
 <style scoped>
     .container {

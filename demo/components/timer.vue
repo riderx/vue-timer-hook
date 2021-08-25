@@ -10,14 +10,11 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { defineProps } from 'vue'
 import Digit from './digit.vue'
 
-export default defineComponent({
-  name: 'Timer',
-  components: { Digit },
-  props: {
+defineProps({
     days: {
       type: Object,
       required: false
@@ -34,8 +31,8 @@ export default defineComponent({
       type: Object,
       required: true
     },
-  },
-})
+});
+
 </script>
 <style scoped>
   .timer-container {

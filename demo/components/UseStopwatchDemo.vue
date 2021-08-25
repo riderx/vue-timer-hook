@@ -8,20 +8,10 @@
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
 import Button from "./button.vue"
 import Timer from "./timer.vue"
 import { useStopwatch } from '../../src/index';
 
-export default defineComponent({
-  name: 'UseStopwatchDemo',
-  components: { Button, Timer },
-  setup() {
-    const stopwatch = useStopwatch();
-    return {
-      stopwatch
-    }
-  },
-})
+const stopwatch = useStopwatch();
 </script>

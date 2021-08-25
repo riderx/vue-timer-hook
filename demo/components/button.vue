@@ -4,12 +4,8 @@
     </button>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
 
-export default defineComponent({
-    name: 'Button',
-})
 </script>
 <style scoped>
     .button {

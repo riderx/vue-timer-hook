@@ -14,34 +14,23 @@
     </div>
 </template>
 
-<script>
-import { defineComponent, toRefs } from 'vue'
+<script setup>
+import { defineProps } from 'vue'
 import { useTimer } from '../../src/index';
 import Timer from "./timer.vue"
 import Button from "./button.vue"
 
-export default defineComponent({
-  name: 'UseTimerDemo',
-  components: { Timer, Button },
-  props: {
+const props = defineProps({
     expiryTimestamp: {
       type: Number,
       required: true
-    },
-  },
-  setup(props) {
-    const { expiryTimestamp } = props
-    const timer = useTimer(expiryTimestamp)
-    const reload = () => {
-      // Restarts to 10 minutes timer
-      const time = new Date();
-      time.setSeconds(time.getSeconds() + 600);
-      this.timer.restart(time);
     }
-    return {
-      timer,
-      reload
-    }
-  },
-})
+});
+const timer = useTimer(props.expiryTimestamp)
+const reload = () => {
+  // Restarts to 10 minutes timer
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + 600);
+  this.timer.restart(time);
+}
 </script>

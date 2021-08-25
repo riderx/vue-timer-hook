@@ -25,22 +25,14 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
 import UseTimeDemo from './components/UseTimeDemo.vue'
 import UseTimerDemo from './components/UseTimerDemo.vue'
 import UseTimerWaitStartDemo from './components/UseTimerWaitStartDemo.vue'
 import UseStopwatchDemo from './components/UseStopwatchDemo.vue'
 
-export default defineComponent({
-  name: 'App',
-  components: { UseTimerDemo, UseTimerWaitStartDemo, UseStopwatchDemo, UseTimeDemo },
-  data() {
-    return {
-      time: new Date().setSeconds(new Date().getSeconds() + 600)
-    }
-  },
-})
+const time = new Date().setSeconds(new Date().getSeconds() + 600)
+
 </script>
 <style >
   html, body {
