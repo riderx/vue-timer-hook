@@ -1,3 +1,9 @@
+## [0.0.21](https://github.com/riderx/vue-timer-hook/compare/v0.0.20...v0.0.21) (2021-08-25)
+
+### Bug Fixes
+
+- reset declaration ts ([9906d83](https://github.com/riderx/vue-timer-hook/commit/9906d835b0149b0d0b856808bff7777f7d019b5c))
+
 ## [0.0.20](https://github.com/riderx/vue-timer-hook/compare/v0.0.19...v0.0.20) (2021-08-23)
 
 ### Bug Fixes
