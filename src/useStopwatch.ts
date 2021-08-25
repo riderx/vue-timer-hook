@@ -11,7 +11,7 @@ export interface ResUseStopwatch {
   days: Ref<number>
   start(): void
   pause(): void
-  reset(offset: number, newAutoStart: boolean): void
+  reset(offset?: number, newAutoStart?: boolean): void
   isRunning: Ref<boolean>
 }
 
