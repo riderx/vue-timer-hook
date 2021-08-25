@@ -35,35 +35,26 @@ Vue timer hook is a custom [vue 3 hook](https://vue.org/docs/hooks-intro.html), 
 </template>
 
 
-<script lang="ts">
-import { defineComponent, watchEffect, onMounted } from "vue";
+<script setup lang="ts">
+import {  watchEffect, onMounted } from "vue";
 import { useTimer } from 'vue-timer-hook';
 
-export default defineComponent({
-  name: "Home",
-  setup() {
+const time = new Date();
+time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
+const timer = useTimer(time);
+const restartFive = () => {
+    // Restarts to 5 minutes timer
     const time = new Date();
-    time.setSeconds(time.getSeconds() + 600); // 10 minutes timer
-    const timer = useTimer(time);
-    const restartFive = () => {
-        // Restarts to 5 minutes timer
-        const time = new Date();
-        time.setSeconds(time.getSeconds() + 300);
-        timer.restart(time);
+    time.setSeconds(time.getSeconds() + 300);
+    timer.restart(time);
+}
+onMounted(() => {
+  watchEffect(async () => {
+    if(timer.isExpired.value) {
+        console.warn('IsExpired')
     }
-    onMounted(() => {
-      watchEffect(async () => {
-        if(timer.isExpired.value) {
-            console.warn('IsExpired')
-        }
-      })
-    })
-    return {
-        timer,
-        restartFive,
-     };
-  },
-});
+  })
+})
 </script>
 ```
 
@@ -113,20 +104,12 @@ export default defineComponent({
 </template>
 
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from "vue";
 import { useStopwatch } from 'vue-timer-hook';
 
-export default defineComponent({
-  name: "Home",
-  setup() {
-    const autoStart = true;
-    const stopwatch = useStopwatch(autoStart);
-    return {
-        stopwatch,
-     };
-  },
-});
+const autoStart = true;
+const stopwatch = useStopwatch(autoStart);
 </script>
 ```
 
