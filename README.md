@@ -188,4 +188,4 @@ export default defineComponent({
 
 ### Credit
 
-Inspired by [react-timer-hook](https://github.com/riderx/react-timer-hook)
+Inspired by [react-timer-hook](https://github.com/amrlabib/react-timer-hook)
