@@ -1,6 +1,12 @@
 {
   "name": "vue-timer-hook",
-  "version": "0.0.21",
+  "version": "0.0.22",
+  "keywords": [
+    "vue",
+    "vue3",
+    "timer",
+    "hook"
+  ],
   "main": "dist/vue-timer-hook.cjs.js",
   "unpkg": "dist/vue-timer-hook.global.js",
   "jsdelivr": "dist/vue-timer-hook.global.js",
