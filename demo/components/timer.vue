@@ -11,24 +11,23 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import Digit from './digit.vue'
 
 defineProps({
     days: {
-      type: Object,
+      type: Number,
       required: false
     },
     hours: {
-      type: Object,
+      type: Number,
       required: true
     },
     minutes: {
-      type: Object,
+      type: Number,
       required: true
     },
     seconds: {
-      type: Object,
+      type: Number,
       required: true
     },
 });

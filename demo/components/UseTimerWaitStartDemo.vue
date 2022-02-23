@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { useTimer } from '../../src/index';
 import Timer from "./timer.vue"
 import Button from "./button.vue"

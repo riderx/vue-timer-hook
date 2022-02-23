@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { useTimer } from '../../src/index';
 import Timer from "./timer.vue"
 import Button from "./button.vue"
@@ -31,6 +30,6 @@ const reload = () => {
   // Restarts to 10 minutes timer
   const time = new Date();
   time.setSeconds(time.getSeconds() + 600);
-  this.timer.restart(time);
+  timer.restart(time);
 }
 </script>
