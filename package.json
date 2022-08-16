@@ -92,7 +92,7 @@
     "connect-history-api-fallback": "^1.6.0",
     "conventional-changelog-cli": "2.2.2",
     "css-loader": "6.7.1",
-    "dotenv": "16.0.0",
+    "dotenv": "16.0.1",
     "faked-promise": "^2.2.2",
     "gh-pages": "^4.0.0",
     "html-webpack-plugin": "5.5.0",
