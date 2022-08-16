@@ -89,7 +89,7 @@
     "chalk": "5.0.1",
     "chromedriver": "103.0.0",
     "codecov": "4.0.0-0",
-    "connect-history-api-fallback": "^1.6.0",
+    "connect-history-api-fallback": "^2.0.0",
     "conventional-changelog-cli": "2.2.2",
     "css-loader": "6.7.1",
     "dotenv": "16.0.1",
