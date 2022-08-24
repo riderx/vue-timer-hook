@@ -10,6 +10,12 @@ afterEach(() => {
   jest.useRealTimers()
 })
 
+describe('Timezones', () => {
+    it('should always be UTC', () => {
+        expect(new Date().getTimezoneOffset()).toBe(0);
+    });
+});
+
 test('init value useTime 24-hour', () => {
   const time = useTime()
   expect(time.seconds.value).toBe(12)
