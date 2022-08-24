@@ -41,7 +41,7 @@
     "test:types": "tsc --build tsconfig.json",
     "test:dts": "tsc -p ./test-dts/tsconfig.json",
     "test:unit": "jest --coverage",
-    "test": "yarn run test:types && yarn run test:unit && yarn run build && yarn run build:dts && yarn run test:e2e",
+    "test": "yarn run test:types && yarn run test:unit",
     "test:e2e": "yarn run test:e2e:headless && yarn run test:e2e:native",
     "test:e2e:headless": "node e2e/runner.js -e chrome-headless --skiptags no-headless",
     "test:e2e:native": "node e2e/runner.js -e chrome --tag no-headless",
