@@ -5,6 +5,7 @@ module.exports = {
     __TEST__: true,
     __BROWSER__: true,
   },
+  globalSetup: './jest-global-setup.js',
   coverageDirectory: 'coverage',
   coverageReporters: ['html', 'lcov', 'text'],
   collectCoverageFrom: ['src/**/*.ts'],
