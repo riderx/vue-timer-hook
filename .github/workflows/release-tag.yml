@@ -23,9 +23,10 @@ jobs:
         run: npm run test
       - name: Build
         id: build_code
-        run: 
-          - npm run build
-          - npm run build:dts
+        run: npm run build
+      - name: Build TS
+        id: build_type
+        run: npm run build:dts
       - uses: JS-DevTools/npm-publish@v1
         with:
           access: public
