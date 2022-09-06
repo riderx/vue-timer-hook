@@ -103,7 +103,7 @@
     "nightwatch": "2.3.3",
     "nightwatch-helpers": "^1.2.0",
     "prettier": "2.7.1",
-    "rollup": "2.78.1",
+    "rollup": "2.79.0",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "0.33.0",
@@ -114,7 +114,7 @@
     "vite": "^2.8.4",
     "vitepress": "0.22.4",
     "vue": "3.2.31",
-    "vue-tsc": "0.40.4",
+    "vue-tsc": "0.40.9",
     "yorkie": "^2.0.0"
   }
 }
