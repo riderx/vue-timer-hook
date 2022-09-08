@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.16](https://github.com/riderx/vue-timer-hook/compare/v1.0.15...v1.0.16) (2022-09-08)
+
+
+### Bug Fixes
+
+* remove useless workflow ([4ded09a](https://github.com/riderx/vue-timer-hook/commit/4ded09aea9f8d65835d8f809ef242d0d294a1d3c))
+
 ### [1.0.15](https://github.com/riderx/vue-timer-hook/compare/v1.0.14...v1.0.15) (2022-09-08)
 
 ### [1.0.14](https://github.com/riderx/vue-timer-hook/compare/v1.0.13...v1.0.14) (2022-09-06)
