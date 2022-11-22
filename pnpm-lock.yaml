@@ -36,7 +36,7 @@ specifiers:
   jest-mock-warn: ^1.1.0
   lint-staged: 13.0.3
   mockdate: ^3.0.5
-  nightwatch: 2.3.4
+  nightwatch: 2.5.1
   nightwatch-helpers: ^1.2.0
   prettier: 2.7.1
   rollup: 2.79.1
@@ -89,7 +89,7 @@ devDependencies:
   jest-mock-warn: 1.1.0
   lint-staged: 13.0.3
   mockdate: 3.0.5
-  nightwatch: 2.3.4_chromedriver@105.0.1
+  nightwatch: 2.5.1_chromedriver@105.0.1
   nightwatch-helpers: 1.2.0
   prettier: 2.7.1
   rollup: 2.79.1
@@ -564,6 +564,13 @@ packages:
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
+
+  /@colors/colors/1.5.0:
+    resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
+    engines: {node: '>=0.1.90'}
+    requiresBuild: true
+    dev: true
+    optional: true
 
   /@commitlint/cli/17.1.1_ts-node@10.9.1:
     resolution: {integrity: sha512-xyQJNJs1j18At5wSBF6bMo1on6ZrpcHUr4duacznPU0RnywCAABDBP1s63BmhkTMdNXLVgVM4J1H2sG0HSS3IA==}
@@ -1975,6 +1982,11 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: true
 
+  /axe-core/4.5.2:
+    resolution: {integrity: sha512-u2MVsXfew5HBvjsczCv+xlwdNnB1oQR9HlAcsejZttNjKKSkeDNVwB1vMThIUIFI9GoT57Vtk8iQLwqOfAkboA==}
+    engines: {node: '>=4'}
+    dev: true
+
   /axios/0.27.2:
     resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
     dependencies:
@@ -2330,6 +2342,15 @@ packages:
   /cli-spinners/2.6.1:
     resolution: {integrity: sha512-x/5fWmGMnbKQAaNwN+UZlV79qBLM9JFnJuJ03gIi5whrob0xV0ofNVHy9DhwGdsMJQc2OKv0oGmLzvaqvAVv+g==}
     engines: {node: '>=6'}
+    dev: true
+
+  /cli-table3/0.6.3:
+    resolution: {integrity: sha512-w5Jac5SykAeZJKntOxJCrm63Eg5/4dhMWIcuTbo9rpE+brgaSZo0RuNJZeOyMgsUdhDeojvgyQLmjI+K50ZGyg==}
+    engines: {node: 10.* || >= 12.*}
+    dependencies:
+      string-width: 4.2.3
+    optionalDependencies:
+      '@colors/colors': 1.5.0
     dev: true
 
   /cli-truncate/2.1.0:
@@ -2785,7 +2806,7 @@ packages:
     dev: true
 
   /decamelize/1.2.0:
-    resolution: {integrity: sha1-9lNNFRSCabIDUue+4m9QH5oZEpA=}
+    resolution: {integrity: sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -4219,7 +4240,7 @@ packages:
     dev: true
 
   /is-plain-obj/1.1.0:
-    resolution: {integrity: sha1-caUMhCnfync8kqOQpKA7OfzVHT4=}
+    resolution: {integrity: sha512-yvkRyxmFKEOQ4pNXCmJG5AEQNlXJS5LaONXo5/cLdTZdWvsZ1ioJEonLGAosKlMWE8lwUy/bJzMjcw8az73+Fg==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -4290,7 +4311,7 @@ packages:
     dev: true
 
   /isexe/2.0.0:
-    resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=}
+    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
   /istanbul-lib-coverage/3.2.0:
@@ -5351,13 +5372,19 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
+  /nightwatch-axe-verbose/2.0.3:
+    resolution: {integrity: sha512-VxwYTXmdbWZ4GRxgAc0/6uZ1nDQ5/xnXUipLrxoUsLxrh9OjNmAwqlMsIlQN8o33XwbjGm+o9ikan5erYGEOFQ==}
+    dependencies:
+      axe-core: 4.5.2
+    dev: true
+
   /nightwatch-helpers/1.2.0:
     resolution: {integrity: sha1-ze/rdjUHShQYJae20blVtteBCg8=}
     dev: true
 
-  /nightwatch/2.3.4_chromedriver@105.0.1:
-    resolution: {integrity: sha512-bjhijxC2/7HlEPk1ikLFxvypnBLGH2gcekPty8cq4xc6/vLbPkCHnOpjRDcvM5B0ARU/hvRGCpnxWffPFyF5UA==}
-    engines: {node: '>= 10.0.0'}
+  /nightwatch/2.5.1_chromedriver@105.0.1:
+    resolution: {integrity: sha512-cBG5R09plGKD3h97Zj469wPCVdj+QlfdNltUM1w5SEkG0jrVJntKTDTEzAtUB6rB77YcftHF+apL4GXM2I7fvQ==}
+    engines: {node: '>= 12.0.0'}
     hasBin: true
     peerDependencies:
       '@cucumber/cucumber': '*'
@@ -5378,6 +5405,7 @@ packages:
       chai-nightwatch: 0.5.3
       chromedriver: 105.0.1
       ci-info: 3.3.0
+      cli-table3: 0.6.3
       didyoumean: 1.2.2
       dotenv: 10.0.0
       ejs: 3.1.8
@@ -5388,16 +5416,19 @@ packages:
       lodash.defaultsdeep: 4.6.1
       lodash.escape: 4.0.1
       lodash.merge: 4.6.2
-      minimatch: 3.0.4
+      minimatch: 3.1.2
       minimist: 1.2.6
       mkpath: 1.0.0
       mocha: 9.2.2
+      nightwatch-axe-verbose: 2.0.3
       open: 8.4.0
       ora: 5.4.1
-      selenium-webdriver: 4.4.0
+      selenium-webdriver: 4.6.1
       semver: 7.3.5
       stacktrace-parser: 0.1.10
       strip-ansi: 6.0.1
+      untildify: 4.0.0
+      uuid: 8.3.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -5554,7 +5585,7 @@ packages:
     dev: true
 
   /p-locate/2.0.0:
-    resolution: {integrity: sha1-IKAQOyIqcMj9OcwuWAaA893l7EM=}
+    resolution: {integrity: sha512-nQja7m7gSKuewoVRen45CtVfODR3crN3goVQ0DDZ9N3yHxgpkuBhZqsaiotSQRrADUrne346peY7kT3TSACykg==}
     engines: {node: '>=4'}
     dependencies:
       p-limit: 1.3.0
@@ -5641,7 +5672,7 @@ packages:
     dev: true
 
   /path-exists/3.0.0:
-    resolution: {integrity: sha1-zg6+ql94yxiSXqfYENe1mwEP1RU=}
+    resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==}
     engines: {node: '>=4'}
     dev: true
 
@@ -6192,9 +6223,9 @@ packages:
     hasBin: true
     dev: true
 
-  /selenium-webdriver/4.4.0:
-    resolution: {integrity: sha512-Du+/xfpvNi9zHAeYgXhOWN9yH0hph+cuX+hHDBr7d+SbtQVcfNJwBzLsbdHrB1Wh7MHXFuIkSG88A9TRRQUx3g==}
-    engines: {node: '>= 10.15.0'}
+  /selenium-webdriver/4.6.1:
+    resolution: {integrity: sha512-FT8Dw0tbzaTp8YYLuwhaCnve/nw03HKrOJrA3aUmTKmxaIFSP4kT2R5fN3K0RpV5kbR0ZnM4FGVI2vANBvekaA==}
+    engines: {node: '>= 14.20.0'}
     dependencies:
       jszip: 3.10.1
       tmp: 0.2.1
@@ -6823,6 +6854,11 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
+  /untildify/4.0.0:
+    resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
+    engines: {node: '>=8'}
+    dev: true
+
   /uri-js/4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
@@ -6840,6 +6876,11 @@ packages:
   /uuid/3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
     deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+    hasBin: true
+    dev: true
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
     dev: true
 
