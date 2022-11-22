@@ -10,7 +10,7 @@ specifiers:
   '@rollup/plugin-replace': 4.0.0
   '@sucrase/jest-plugin': 2.2.1
   '@types/jest': 29.1.2
-  '@types/jsdom': 20.0.0
+  '@types/jsdom': 20.0.1
   '@types/node': ^18.7.6
   '@types/webpack': ^5.28.0
   '@types/webpack-env': 1.18.0
@@ -63,7 +63,7 @@ devDependencies:
   '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
   '@sucrase/jest-plugin': 2.2.1
   '@types/jest': 29.1.2
-  '@types/jsdom': 20.0.0
+  '@types/jsdom': 20.0.1
   '@types/node': 18.7.13
   '@types/webpack': 5.28.0
   '@types/webpack-env': 1.18.0
@@ -1335,8 +1335,8 @@ packages:
       pretty-format: 29.3.1
     dev: true
 
-  /@types/jsdom/20.0.0:
-    resolution: {integrity: sha512-YfAchFs0yM1QPDrLm2VHe+WHGtqms3NXnXAMolrgrVP6fgBHHXy1ozAbo/dFtPNtZC/m66bPiCTWYmqp1F14gA==}
+  /@types/jsdom/20.0.1:
+    resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
     dependencies:
       '@types/node': 18.7.13
       '@types/tough-cookie': 4.0.1
