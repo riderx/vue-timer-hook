@@ -32,5 +32,5 @@ jobs:
         id: build_code
         run: pnpm build
       - name: Build Ts
-        id: build_code
+        id: build_code_type
         run: pnpm build:dts
