@@ -34,3 +34,6 @@ jobs:
       - name: Build Ts
         id: build_code_type
         run: pnpm build:dts
+      - name: Test
+        id: test_code
+        run: pnpm test
