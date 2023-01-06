@@ -73,7 +73,7 @@
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-replace": "4.0.0",
     "@sucrase/jest-plugin": "2.2.1",
-    "@types/jest": "29.2.3",
+    "@types/jest": "29.2.5",
     "@types/jsdom": "20.0.1",
     "@types/node": "^18.7.13",
     "@types/webpack": "^5.28.0",

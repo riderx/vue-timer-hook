@@ -9,7 +9,7 @@ specifiers:
   '@rollup/plugin-node-resolve': 15.0.1
   '@rollup/plugin-replace': 4.0.0
   '@sucrase/jest-plugin': 2.2.1
-  '@types/jest': 29.2.3
+  '@types/jest': 29.2.5
   '@types/jsdom': 20.0.1
   '@types/node': ^18.7.13
   '@types/webpack': ^5.28.0
@@ -62,7 +62,7 @@ devDependencies:
   '@rollup/plugin-node-resolve': 15.0.1_rollup@2.79.1
   '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
   '@sucrase/jest-plugin': 2.2.1
-  '@types/jest': 29.2.3
+  '@types/jest': 29.2.5
   '@types/jsdom': 20.0.1
   '@types/node': 18.11.18
   '@types/webpack': 5.28.0
@@ -1396,8 +1396,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.2.3:
-    resolution: {integrity: sha512-6XwoEbmatfyoCjWRX7z0fKMmgYKe9+/HrviJ5k0X/tjJWHGAezZOfYaxqQKuzG/TvQyr+ktjm4jgbk0s4/oF2w==}
+  /@types/jest/29.2.5:
+    resolution: {integrity: sha512-H2cSxkKgVmqNHXP7TC2L/WUorrZu8ZigyRywfVzv6EyBlxj39n4C00hjXYQWsbwqgElaj/CiAeSRmk5GoaKTgw==}
     dependencies:
       expect: 29.3.1
       pretty-format: 29.3.1
