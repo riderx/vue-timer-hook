@@ -34,7 +34,7 @@ specifiers:
   husky: ^8.0.1
   jest: 29.3.1
   jest-mock-warn: ^1.1.0
-  lint-staged: 13.0.4
+  lint-staged: 13.1.0
   mockdate: ^3.0.5
   nightwatch: 2.5.1
   nightwatch-helpers: ^1.2.0
@@ -87,7 +87,7 @@ devDependencies:
   husky: 8.0.3
   jest: 29.3.1_zfha7dvnw4nti6zkbsmhmn6xo4
   jest-mock-warn: 1.1.0
-  lint-staged: 13.0.4
+  lint-staged: 13.1.0
   mockdate: 3.0.5
   nightwatch: 2.5.1_chromedriver@105.0.1
   nightwatch-helpers: 1.2.0
@@ -4736,8 +4736,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/13.0.4:
-    resolution: {integrity: sha512-HxlHCXoYRsq9QCby5wFozmZW00hMs/9e3l+/dz6Qr8Kle4UH0kJTdABAbqhzG+3pcG6QjL9kz7NgGBfph+a5dw==}
+  /lint-staged/13.1.0:
+    resolution: {integrity: sha512-pn/sR8IrcF/T0vpWLilih8jmVouMlxqXxKuAojmbiGX5n/gDnz+abdPptlj0vYnbfE0SQNl3CY/HwtM0+yfOVQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
