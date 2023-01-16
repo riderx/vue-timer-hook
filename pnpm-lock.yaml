@@ -26,7 +26,7 @@ specifiers:
   codecov: 4.0.0-0
   connect-history-api-fallback: ^2.0.0
   conventional-changelog-cli: 2.2.2
-  css-loader: 6.7.2
+  css-loader: 6.7.3
   dotenv: 16.0.3
   faked-promise: ^2.2.2
   gh-pages: ^4.0.0
@@ -79,7 +79,7 @@ devDependencies:
   codecov: 4.0.0-0
   connect-history-api-fallback: 2.0.0
   conventional-changelog-cli: 2.2.2
-  css-loader: 6.7.2
+  css-loader: 6.7.3
   dotenv: 16.0.3
   faked-promise: 2.2.2
   gh-pages: 4.0.0
@@ -2748,8 +2748,8 @@ packages:
       which: 2.0.2
     dev: true
 
-  /css-loader/6.7.2:
-    resolution: {integrity: sha512-oqGbbVcBJkm8QwmnNzrFrWTnudnRZC+1eXikLJl0n4ljcfotgRifpg2a1lKy8jTrc4/d9A/ap1GFq1jDKG7J+Q==}
+  /css-loader/6.7.3:
+    resolution: {integrity: sha512-qhOH1KlBMnZP8FzRO6YCH9UHXQhVMcEGLyNdb7Hv2cpcmJbW0YrddO+tG1ab5nT41KpHIYGsbeHqxB9xPu1pKQ==}
     engines: {node: '>= 12.13.0'}
     peerDependencies:
       webpack: ^5.0.0
