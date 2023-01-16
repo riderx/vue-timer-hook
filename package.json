@@ -90,7 +90,7 @@
     "codecov": "4.0.0-0",
     "connect-history-api-fallback": "^2.0.0",
     "conventional-changelog-cli": "2.2.2",
-    "css-loader": "6.7.2",
+    "css-loader": "6.7.3",
     "dotenv": "16.0.3",
     "faked-promise": "^2.2.2",
     "gh-pages": "^4.0.0",
