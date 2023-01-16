@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.1.1
   '@commitlint/config-conventional': ^17.1.0
-  '@microsoft/api-extractor': 7.33.6
+  '@microsoft/api-extractor': 7.33.7
   '@rollup/plugin-alias': 4.0.2
   '@rollup/plugin-commonjs': 23.0.7
   '@rollup/plugin-node-resolve': 15.0.1
@@ -56,7 +56,7 @@ specifiers:
 devDependencies:
   '@commitlint/cli': 17.4.0_@types+node@18.11.18
   '@commitlint/config-conventional': 17.4.0
-  '@microsoft/api-extractor': 7.33.6
+  '@microsoft/api-extractor': 7.33.7
   '@rollup/plugin-alias': 4.0.2_rollup@2.79.1
   '@rollup/plugin-commonjs': 23.0.7_rollup@2.79.1
   '@rollup/plugin-node-resolve': 15.0.1_rollup@2.79.1
@@ -1074,22 +1074,22 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-extractor-model/7.25.2:
-    resolution: {integrity: sha512-+h1uCrLQXFAKMUdghhdDcnniDB+6UA/lS9ArlB4QZQ34UbLuXNy2oQ6fafFK8cKXU4mUPTF/yGRjv7JKD5L7eg==}
+  /@microsoft/api-extractor-model/7.25.3:
+    resolution: {integrity: sha512-WWxBUq77p2iZ+5VF7Nmrm3y/UtqCh5bYV8ii3khwq3w99+fXWpvfsAhgSLsC7k8XDQc6De4ssMxH6He/qe1pzg==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.53.2
+      '@rushstack/node-core-library': 3.53.3
     dev: true
 
-  /@microsoft/api-extractor/7.33.6:
-    resolution: {integrity: sha512-EYu1qWiMyvP/P+7na76PbE7+eOtvuYIvQa2DhZqkSQSLYP2sKLmZaSMK5Jvpgdr0fK/xLFujK5vLf3vpfcmC8g==}
+  /@microsoft/api-extractor/7.33.7:
+    resolution: {integrity: sha512-fQT2v/j/55DhvMFiopLtth66E7xTFNhnumMKgKY14SaG6qU/V1W0e4nOAgbA+SmLakQjAd1Evu06ofaVaxBPbA==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.25.2
+      '@microsoft/api-extractor-model': 7.25.3
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.53.2
+      '@rushstack/node-core-library': 3.53.3
       '@rushstack/rig-package': 0.3.17
       '@rushstack/ts-command-line': 4.13.1
       colors: 1.2.5
@@ -1244,8 +1244,8 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rushstack/node-core-library/3.53.2:
-    resolution: {integrity: sha512-FggLe5DQs0X9MNFeJN3/EXwb+8hyZUTEp2i+V1e8r4Va4JgkjBNY0BuEaQI+3DW6S4apV3UtXU3im17MSY00DA==}
+  /@rushstack/node-core-library/3.53.3:
+    resolution: {integrity: sha512-H0+T5koi5MFhJUd5ND3dI3bwLhvlABetARl78L3lWftJVQEPyzcgTStvTTRiIM5mCltyTM8VYm6BuCtNUuxD0Q==}
     dependencies:
       '@types/node': 12.20.24
       colors: 1.2.5
