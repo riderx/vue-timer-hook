@@ -4,7 +4,7 @@ specifiers:
   '@commitlint/cli': ^17.1.1
   '@commitlint/config-conventional': ^17.1.0
   '@microsoft/api-extractor': 7.33.8
-  '@rollup/plugin-alias': 4.0.2
+  '@rollup/plugin-alias': 4.0.3
   '@rollup/plugin-commonjs': 23.0.7
   '@rollup/plugin-node-resolve': 15.0.1
   '@rollup/plugin-replace': 4.0.0
@@ -57,7 +57,7 @@ devDependencies:
   '@commitlint/cli': 17.4.0_@types+node@18.11.18
   '@commitlint/config-conventional': 17.4.0
   '@microsoft/api-extractor': 7.33.8
-  '@rollup/plugin-alias': 4.0.2_rollup@2.79.1
+  '@rollup/plugin-alias': 4.0.3_rollup@2.79.1
   '@rollup/plugin-commonjs': 23.0.7_rollup@2.79.1
   '@rollup/plugin-node-resolve': 15.0.1_rollup@2.79.1
   '@rollup/plugin-replace': 4.0.0_rollup@2.79.1
@@ -1150,8 +1150,8 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@rollup/plugin-alias/4.0.2_rollup@2.79.1:
-    resolution: {integrity: sha512-1hv7dBOZZwo3SEupxn4UA2N0EDThqSSS+wI1St1TNTBtOZvUchyIClyHcnDcjjrReTPZ47Faedrhblv4n+T5UQ==}
+  /@rollup/plugin-alias/4.0.3_rollup@2.79.1:
+    resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^1.20.0||^2.0.0||^3.0.0
