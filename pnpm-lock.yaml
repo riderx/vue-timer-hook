@@ -36,7 +36,7 @@ specifiers:
   jest-mock-warn: ^1.1.0
   lint-staged: 13.1.0
   mockdate: ^3.0.5
-  nightwatch: 2.6.10
+  nightwatch: 2.6.13
   nightwatch-helpers: ^1.2.0
   prettier: 2.8.0
   rollup: 2.79.1
@@ -89,7 +89,7 @@ devDependencies:
   jest-mock-warn: 1.1.0
   lint-staged: 13.1.0
   mockdate: 3.0.5
-  nightwatch: 2.6.10_chromedriver@105.0.1
+  nightwatch: 2.6.13_chromedriver@105.0.1
   nightwatch-helpers: 1.2.0
   prettier: 2.8.0
   rollup: 2.79.1
@@ -5422,8 +5422,8 @@ packages:
     resolution: {integrity: sha512-TeYlrNctoy0rJdVAYKoouG+mwv1FmfZkArdBM76sM6090BOt5mKzJNr24lr9PFdDpBrjKhS6b/b6qJzGY/wCig==}
     dev: true
 
-  /nightwatch/2.6.10_chromedriver@105.0.1:
-    resolution: {integrity: sha512-nn5HVEtETLQ8qgu7APAZKg/yXTBkMflwdmzhfywP8mZUfKk0/dRQbeDqY2RawHr/sYsFmZV6eMirlJaaQoQ7Yw==}
+  /nightwatch/2.6.13_chromedriver@105.0.1:
+    resolution: {integrity: sha512-b0ENRXXBNLPnjyi4rDrL20Vh/LMwH6wYe0zTNvInKtt4HgxdS5oUB7Hcbj1eckgHBqbVb9J+p3M2J8T18SXoVA==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
     peerDependencies:
