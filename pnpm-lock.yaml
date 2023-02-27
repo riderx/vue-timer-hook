@@ -36,7 +36,7 @@ specifiers:
   jest-mock-warn: ^1.1.0
   lint-staged: 13.1.2
   mockdate: ^3.0.5
-  nightwatch: 2.6.13
+  nightwatch: 2.6.15
   nightwatch-helpers: ^1.2.0
   prettier: 2.8.3
   rollup: 2.79.1
@@ -89,7 +89,7 @@ devDependencies:
   jest-mock-warn: 1.1.0
   lint-staged: 13.1.2
   mockdate: 3.0.5
-  nightwatch: 2.6.13_chromedriver@105.0.1
+  nightwatch: 2.6.15_chromedriver@105.0.1
   nightwatch-helpers: 1.2.0
   prettier: 2.8.3
   rollup: 2.79.1
@@ -5515,8 +5515,8 @@ packages:
     resolution: {integrity: sha512-TeYlrNctoy0rJdVAYKoouG+mwv1FmfZkArdBM76sM6090BOt5mKzJNr24lr9PFdDpBrjKhS6b/b6qJzGY/wCig==}
     dev: true
 
-  /nightwatch/2.6.13_chromedriver@105.0.1:
-    resolution: {integrity: sha512-b0ENRXXBNLPnjyi4rDrL20Vh/LMwH6wYe0zTNvInKtt4HgxdS5oUB7Hcbj1eckgHBqbVb9J+p3M2J8T18SXoVA==}
+  /nightwatch/2.6.15_chromedriver@105.0.1:
+    resolution: {integrity: sha512-mZFtts5RIdlVQbYy/LOWSD+qdwc9sRCyVIe4A1ijftO7Zr3QaobPPtW2gIRnP6gcWT0UvLPUk2IGheo9HZL0Rw==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
     peerDependencies:
@@ -7489,7 +7489,7 @@ packages:
       require-directory: 2.1.1
       string-width: 4.2.3
       y18n: 5.0.8
-      yargs-parser: 20.2.4
+      yargs-parser: 20.2.9
     dev: true
 
   /yargs/17.7.0:
