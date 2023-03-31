@@ -76,7 +76,7 @@ function createConfig(format, output, plugins = []) {
   const isNodeBuild = format === 'cjs'
   const isBundlerESMBuild = /esm-bundler/.test(format)
 
-  if (isGlobalBuild) output.name = 'VueRouter'
+  if (isGlobalBuild) output.name = 'VueTimerHook'
 
   const shouldEmitDeclarations = !hasTSChecked
 
