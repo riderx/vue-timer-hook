@@ -62,8 +62,8 @@ devDependencies:
     specifier: 1.5.1
     version: 1.5.1
   chalk:
-    specifier: 5.1.2
-    version: 5.1.2
+    specifier: 5.2.0
+    version: 5.2.0
   chromedriver:
     specifier: 105.0.1
     version: 105.0.1
@@ -2345,8 +2345,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /chalk@5.1.2:
-    resolution: {integrity: sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==}
+  /chalk@5.2.0:
+    resolution: {integrity: sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: true
 
