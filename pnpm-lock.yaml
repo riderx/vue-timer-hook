@@ -59,8 +59,8 @@ devDependencies:
     specifier: ^1.3.2
     version: 1.3.3
   browserstack-local:
-    specifier: 1.5.1
-    version: 1.5.1
+    specifier: 1.5.2
+    version: 1.5.2
   chalk:
     specifier: 5.2.0
     version: 5.2.0
@@ -2243,8 +2243,8 @@ packages:
       update-browserslist-db: 1.0.10(browserslist@4.21.5)
     dev: true
 
-  /browserstack-local@1.5.1:
-    resolution: {integrity: sha512-T/wxyWDzvBHbDvl7fZKpFU7mYze6nrUkBhNy+d+8bXBqgQX10HTYvajIGO0wb49oGSLCPM0CMZTV/s7e6LF0sA==}
+  /browserstack-local@1.5.2:
+    resolution: {integrity: sha512-qdsVGk5ndnVgjm5ekpaOfFYQoU/WOK1WFDrlzk9J7xzA+gnD1Vge2w1TFwvc2M0LW6VZePSk6y0Q1CPGyT/9HQ==}
     dependencies:
       agent-base: 6.0.2
       https-proxy-agent: 5.0.1
