@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^4.0.0
     version: 4.0.0
   html-webpack-plugin:
-    specifier: 5.5.0
-    version: 5.5.0(webpack@5.76.1)
+    specifier: 5.5.1
+    version: 5.5.1(webpack@5.76.1)
   husky:
     specifier: ^8.0.1
     version: 8.0.3
@@ -4024,8 +4024,8 @@ packages:
       terser: 5.16.6
     dev: true
 
-  /html-webpack-plugin@5.5.0(webpack@5.76.1):
-    resolution: {integrity: sha512-sy88PC2cRTVxvETRgUHFrL4No3UxvcH8G1NepGhqaTT+GXN2kTamqasot0inS5hXeg1cMbFDt27zzo9p35lZVw==}
+  /html-webpack-plugin@5.5.1(webpack@5.76.1):
+    resolution: {integrity: sha512-cTUzZ1+NqjGEKjmVgZKLMdiFg3m9MdRXkZW2OEe69WYVi5ONLMmlnSZdXzGGMOq0C8jGDrL6EWyEDDUioHO/pA==}
     engines: {node: '>=10.13.0'}
     peerDependencies:
       webpack: ^5.20.0
