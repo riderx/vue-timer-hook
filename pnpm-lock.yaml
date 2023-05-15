@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^3.0.5
     version: 3.0.5
   nightwatch:
-    specifier: 2.6.19
-    version: 2.6.19(chromedriver@105.0.1)
+    specifier: 2.6.20
+    version: 2.6.20(chromedriver@105.0.1)
   nightwatch-helpers:
     specifier: ^1.2.0
     version: 1.2.0
@@ -1179,8 +1179,8 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@nightwatch/html-reporter-template@0.1.4:
-    resolution: {integrity: sha512-fVylXypRuNJbyFAwY/5H2QM1A1XVoZWis0zhiMwA5LQN0cxHzpG2aUheb+qP1EfkxhFxwSUHOcrvphFLbPA8ow==}
+  /@nightwatch/html-reporter-template@0.2.1:
+    resolution: {integrity: sha512-GEBeGoXVmTYPtNC4Yq34vfgxf6mlFyEagxpsfH18Qe5BvctF2rprX+wI5dKBm9p5IqHo6ZOcXHCufOeP3cjuOw==}
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
@@ -5421,10 +5421,6 @@ packages:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
-  /mkpath@1.0.0:
-    resolution: {integrity: sha512-PbNHr7Y/9Y/2P5pKFv5XOGBfNQqZ+fdiHWcuf7swLACN5ZW5LU7J5tMU8LSBjpluAxAxKYGD9nnaIbdRy9+m1w==}
-    dev: true
-
   /mocha@9.2.2:
     resolution: {integrity: sha512-L6XC3EdwT6YrIk0yXpavvLkn8h+EU+Y5UcCHKECyMbdUIxyMuZj4bX4U9e1nvnvUUvQVsV2VHQr5zLdcUkhW/g==}
     engines: {node: '>= 12.0.0'}
@@ -5515,8 +5511,8 @@ packages:
     resolution: {integrity: sha512-TeYlrNctoy0rJdVAYKoouG+mwv1FmfZkArdBM76sM6090BOt5mKzJNr24lr9PFdDpBrjKhS6b/b6qJzGY/wCig==}
     dev: true
 
-  /nightwatch@2.6.19(chromedriver@105.0.1):
-    resolution: {integrity: sha512-AxuPEWlf+MCfo4tZ0BFKkxqUIL0x/jZeFSvxV7Wwp/sBM8XmVA1rEEhNe/pCVsyjL+Q4G97rMKTonFYF/aXsBw==}
+  /nightwatch@2.6.20(chromedriver@105.0.1):
+    resolution: {integrity: sha512-XEyxuSGhESdHj4LHqA5snrc/nMgH4tsB/mWrbyGt3EwW1AgjyE7DRzJUbhG7J00Np3Dv3k2nmyJs0Xq0FX/yvQ==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
     peerDependencies:
@@ -5532,7 +5528,7 @@ packages:
         optional: true
     dependencies:
       '@nightwatch/chai': 5.0.2
-      '@nightwatch/html-reporter-template': 0.1.4
+      '@nightwatch/html-reporter-template': 0.2.1
       ansi-to-html: 0.7.2
       assertion-error: 1.1.0
       boxen: 5.1.2
@@ -5554,7 +5550,6 @@ packages:
       lodash.pick: 4.4.0
       minimatch: 3.1.2
       minimist: 1.2.6
-      mkpath: 1.0.0
       mocha: 9.2.2
       nightwatch-axe-verbose: 2.2.0
       open: 8.4.0
