@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^3.0.5
     version: 3.0.5
   nightwatch:
-    specifier: 2.6.20
-    version: 2.6.20(chromedriver@105.0.1)
+    specifier: 2.6.21
+    version: 2.6.21(chromedriver@105.0.1)
   nightwatch-helpers:
     specifier: ^1.2.0
     version: 1.2.0
@@ -5511,8 +5511,8 @@ packages:
     resolution: {integrity: sha512-TeYlrNctoy0rJdVAYKoouG+mwv1FmfZkArdBM76sM6090BOt5mKzJNr24lr9PFdDpBrjKhS6b/b6qJzGY/wCig==}
     dev: true
 
-  /nightwatch@2.6.20(chromedriver@105.0.1):
-    resolution: {integrity: sha512-XEyxuSGhESdHj4LHqA5snrc/nMgH4tsB/mWrbyGt3EwW1AgjyE7DRzJUbhG7J00Np3Dv3k2nmyJs0Xq0FX/yvQ==}
+  /nightwatch@2.6.21(chromedriver@105.0.1):
+    resolution: {integrity: sha512-jNet9MjhPiU0LY3upxTF1PN65u93f0bHm7ref3+W800GZ64/rlETIZ2s6MvTbokJH/TAhEYVBtdfy05KDvXKtw==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
     peerDependencies:
