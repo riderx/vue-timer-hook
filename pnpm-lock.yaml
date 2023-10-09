@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 devDependencies:
   '@commitlint/cli':
     specifier: ^17.1.1
@@ -59,8 +63,8 @@ devDependencies:
     specifier: ^1.3.2
     version: 1.3.3
   browserstack-local:
-    specifier: 1.5.2
-    version: 1.5.2
+    specifier: 1.5.5
+    version: 1.5.5
   chalk:
     specifier: 5.2.0
     version: 5.2.0
@@ -2243,8 +2247,8 @@ packages:
       update-browserslist-db: 1.0.10(browserslist@4.21.5)
     dev: true
 
-  /browserstack-local@1.5.2:
-    resolution: {integrity: sha512-qdsVGk5ndnVgjm5ekpaOfFYQoU/WOK1WFDrlzk9J7xzA+gnD1Vge2w1TFwvc2M0LW6VZePSk6y0Q1CPGyT/9HQ==}
+  /browserstack-local@1.5.5:
+    resolution: {integrity: sha512-jKne7yosrMcptj3hqxp36TP9k0ZW2sCqhyurX24rUL4G3eT7OLgv+CSQN8iq5dtkv5IK+g+v8fWvsiC/S9KxMg==}
     dependencies:
       agent-base: 6.0.2
       https-proxy-agent: 5.0.1
