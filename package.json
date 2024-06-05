@@ -71,7 +71,7 @@
     "@rollup/plugin-alias": "4.0.4",
     "@rollup/plugin-commonjs": "23.0.7",
     "@rollup/plugin-node-resolve": "15.0.2",
-    "@rollup/plugin-replace": "4.0.0",
+    "@rollup/plugin-replace": "5.0.7",
     "@sucrase/jest-plugin": "2.2.1",
     "@types/jest": "29.2.5",
     "@types/jsdom": "20.0.1",
