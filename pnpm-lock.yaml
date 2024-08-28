@@ -27,8 +27,8 @@ devDependencies:
     specifier: 4.0.0
     version: 4.0.0(rollup@2.79.1)
   '@sucrase/jest-plugin':
-    specifier: 2.2.1
-    version: 2.2.1
+    specifier: 3.0.0
+    version: 3.0.0(jest@29.3.1)(sucrase@3.29.0)
   '@types/jest':
     specifier: 29.2.5
     version: 29.2.5
@@ -1352,9 +1352,13 @@ packages:
       '@sinonjs/commons': 2.0.0
     dev: true
 
-  /@sucrase/jest-plugin@2.2.1:
-    resolution: {integrity: sha512-5fG+kHOlfwPNi82MCvTFQdAg50YQymGbdwH9nzTA9D9FhJVHynTjadXi58gb/Ae17RMvinY0+Fglx33MB056Rg==}
+  /@sucrase/jest-plugin@3.0.0(jest@29.3.1)(sucrase@3.29.0):
+    resolution: {integrity: sha512-VRY6YKYImVWiRg1H3Yu24hwB1UPJDSDR62R/n+lOHR3+yDrfHEIAoddJivblMYN6U3vD+ndfTSrecZ9Jl+iGNw==}
+    peerDependencies:
+      jest: '>=27'
+      sucrase: '>=3.25.0'
     dependencies:
+      jest: 29.3.1(@types/node@18.15.0)(ts-node@10.9.1)
       sucrase: 3.29.0
     dev: true
 
