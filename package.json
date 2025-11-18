@@ -94,7 +94,7 @@
     "dotenv": "16.0.3",
     "faked-promise": "^2.2.2",
     "gh-pages": "^4.0.0",
-    "html-webpack-plugin": "5.5.1",
+    "html-webpack-plugin": "5.6.5",
     "husky": "^8.0.1",
     "jest": "29.3.1",
     "jest-mock-warn": "^1.1.0",
