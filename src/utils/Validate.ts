@@ -4,8 +4,8 @@ export default class Validate {
     if (!isValid) {
       console.warn(
         'vue-timer-hook: { useTimer } Invalid expiryTimestamp settings',
-        expiryTimestamp
-      ) // eslint-disable-line
+        expiryTimestamp,
+      )
     }
     return isValid
   }

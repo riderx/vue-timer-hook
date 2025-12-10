@@ -7,12 +7,13 @@ export interface Interval {
 
 export function useInterval(
   callback: () => void,
-  ms?: number | boolean | null
+  ms?: number | boolean | null,
 ): Interval {
-  let intervalId: NodeJS.Timeout | undefined = undefined
+  let intervalId: NodeJS.Timeout | undefined
 
   const remove = () => {
-    if (!intervalId) return
+    if (!intervalId)
+      return
     clearInterval(intervalId)
     intervalId = undefined
   }

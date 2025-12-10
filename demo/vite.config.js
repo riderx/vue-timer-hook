@@ -1,11 +1,12 @@
-import { defineConfig } from 'vite'
+import { resolve } from 'node:path'
+import { cwd, env } from 'node:process'
 import vue from '@vitejs/plugin-vue'
 import analyze from 'rollup-plugin-analyzer'
-import { resolve } from 'path'
+import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: resolve(process.cwd(), 'demo'),
+  root: resolve(cwd(), 'demo'),
   base: '/vue-timer-hook/',
   build: {
     outDir: '../demo_dist',
@@ -15,10 +16,10 @@ export default defineConfig({
   },
   plugins: [vue()],
   define: {
-    __DEV__: JSON.stringify(!process.env.prod),
+    __DEV__: JSON.stringify(!env.prod),
     __BROWSER__: 'true',
-    'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    env: {
+      NODE_ENV: JSON.stringify(env.NODE_ENV),
     },
   },
 })

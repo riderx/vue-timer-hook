@@ -5,35 +5,34 @@ on:
     branches:
       - renovate/**
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   web:
     runs-on: ubuntu-latest
-    name: 'Build code and test'
+    name: Build code and test
     steps:
       - name: Check out
-        uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+        uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 7
+          bun-version: latest
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 22
       - name: Install dependencies
         id: install_code
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
       - name: Lint
         id: lint_code
-        run: pnpm lint
+        run: bun run lint
       - name: Build
         id: build_code
-        run: pnpm build
+        run: bun run build
       - name: Build Ts
         id: build_code_type
-        run: pnpm build:dts
+        run: bun run build:dts
       - name: Test
         id: test_code
-        run: pnpm test
+        run: bun run test

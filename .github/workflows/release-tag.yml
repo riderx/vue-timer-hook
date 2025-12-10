@@ -4,35 +4,33 @@ on:
   push:
     tags:
       - '*'
-      
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: "Build code and release"
+    name: Build code and release
     steps:
       - name: Check out
-        uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+        uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 7
-      - uses: actions/setup-node@v3
+          bun-version: latest
+      - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 22
       - name: Install dependencies
         id: install_code
-        run: pnpm install --frozen-lockfile 
+        run: bun install --frozen-lockfile
       - name: Test
         id: test_code
-        run: pnpm test
+        run: bun run test
       - name: Build
         id: build_code
-        run: pnpm build
+        run: bun run build
       - name: Build TS
         id: build_type
-        run: pnpm build:dts
-      - uses: JS-DevTools/npm-publish@v1
+        run: bun run build:dts
+      - uses: JS-DevTools/npm-publish@v4
         with:
           access: public
           token: ${{ secrets.NPM_TOKEN }}
-      
-

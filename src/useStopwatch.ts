@@ -1,7 +1,8 @@
-import { Ref, ref } from 'vue'
-import { Time } from './utils'
+import type { Ref } from 'vue'
+import type { Interval } from './hooks/useInterval'
+import { ref, unref, watch } from 'vue'
 import { useInterval } from './hooks'
-import { Interval } from './hooks/useInterval'
+import { Time } from './utils'
 
 const epochSeconds = () => new Date().getTime()
 export interface ResUseStopwatch {
@@ -9,56 +10,67 @@ export interface ResUseStopwatch {
   minutes: Ref<number>
   hours: Ref<number>
   days: Ref<number>
-  start(): void
-  pause(): void
-  reset(offset?: number, newAutoStart?: boolean): void
+  start: () => void
+  pause: () => void
+  reset: (offset?: number | Ref<number>, newAutoStart?: boolean) => void
   isRunning: Ref<boolean>
 }
 
-export const useStopwatch = (
-  offsetTimestamp: number = 60,
-  autoStart: boolean = true
-): ResUseStopwatch => {
+export function useStopwatch(offsetTimestamp: number | Ref<number> = 60, autoStart: boolean | Ref<boolean> = true): ResUseStopwatch {
   let interval: Interval
-  const passedSeconds = ref(offsetTimestamp)
+  const offsetValue = unref(offsetTimestamp)
+  const autoStartValue = unref(autoStart)
+
+  const passedSeconds = ref(offsetValue)
 
   const prevTime = ref(epochSeconds())
   const seconds = ref(
-    passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value || 0, true)
+    passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value || 0, true),
   )
-  const isRunning = ref(autoStart)
+  const isRunning = ref(autoStartValue)
 
   function start() {
     prevTime.value = epochSeconds()
     isRunning.value = true
-    seconds.value =
-      passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value, true)
+    seconds.value
+      = passedSeconds.value + Time.getSecondsFromPrevTime(prevTime.value, true)
     interval = useInterval(
       () => {
-        seconds.value =
-          passedSeconds.value +
-          Time.getSecondsFromPrevTime(prevTime.value, true)
+        seconds.value
+          = passedSeconds.value
+            + Time.getSecondsFromPrevTime(prevTime.value, true)
       },
-      isRunning.value ? 1000 : false
+      isRunning.value ? 1000 : false,
     )
   }
 
   function pause() {
     passedSeconds.value = seconds.value
     isRunning.value = false
-    if (interval) interval.remove()
+    if (interval)
+      interval.remove()
   }
 
-  function reset(offset = 0, newAutoStart = true) {
+  function reset(offset: number | Ref<number> = 0, newAutoStart = true) {
+    const offsetValue = unref(offset)
     pause()
     isRunning.value = newAutoStart
-    passedSeconds.value = offset
+    passedSeconds.value = offsetValue
     seconds.value = +passedSeconds.value
     Time.getSecondsFromPrevTime(prevTime.value, true)
-    if (isRunning.value) start()
+    if (isRunning.value)
+      start()
   }
 
-  if (isRunning.value) start()
+  // Watch for changes if offsetTimestamp is a ref
+  if (typeof offsetTimestamp === 'object' && 'value' in offsetTimestamp) {
+    watch(offsetTimestamp, (newOffset) => {
+      reset(newOffset, isRunning.value)
+    })
+  }
+
+  if (isRunning.value)
+    start()
   return {
     ...Time.getTimeFromSeconds(seconds),
     start,

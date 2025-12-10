@@ -1,12 +1,12 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "noEmit": true,
-    "declaration": true,
     "paths": {
       "vue-router": ["../dist"]
     },
-    "noImplicitReturns": false
+    "noImplicitReturns": false,
+    "declaration": true,
+    "noEmit": true
   },
   "include": ["./"],
   "exclude": ["../__tests__", "../src"]

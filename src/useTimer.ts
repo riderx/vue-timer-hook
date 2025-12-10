@@ -1,8 +1,9 @@
 // import { useState } from 'react';
-import { reactive, toRef, Ref } from 'vue'
-import { Time, Validate } from './utils'
+import type { Ref } from 'vue'
+import type { Interval } from './hooks/useInterval'
+import { reactive, toRef, unref, watch } from 'vue'
 import { useInterval } from './hooks'
-import { Interval } from './hooks/useInterval'
+import { Time, Validate } from './utils'
 
 const DEFAULT_DELAY = 1000
 function getDelayFromExpiryTimestamp(expiryTimestamp: number) {
@@ -19,51 +20,58 @@ export interface UseTimer {
   minutes: Ref<number>
   hours: Ref<number>
   days: Ref<number>
-  start(): void
-  pause(): void
-  resume(): void
-  restart(newExpiryTimestamp?: number, newAutoStart?: boolean): void
+  start: () => void
+  pause: () => void
+  resume: () => void
+  restart: (newExpiryTimestamp?: number | Ref<number>, newAutoStart?: boolean) => void
   isRunning: Ref<boolean>
   isExpired: Ref<boolean>
 }
 
-export const useTimer = (expiry = 60, autoStart = true): UseTimer => {
+export function useTimer(expiry: number | Ref<number> = 60, autoStart: boolean | Ref<boolean> = true): UseTimer {
   let interval: Interval
+  const expiryValue = unref(expiry)
+  const autoStartValue = unref(autoStart)
+
   const state = reactive({
-    expiryTimestamp: expiry,
-    seconds: Time.getSecondsFromExpiry(expiry),
-    isRunning: autoStart,
+    expiryTimestamp: expiryValue,
+    seconds: Time.getSecondsFromExpiry(expiryValue),
+    isRunning: autoStartValue,
     isExpired: false,
-    didStart: autoStart,
-    delay: getDelayFromExpiryTimestamp(expiry),
+    didStart: autoStartValue,
+    delay: getDelayFromExpiryTimestamp(expiryValue),
   })
 
   function _handleExpire() {
     state.isExpired = true
     state.isRunning = false
     state.delay = null
-    if (interval) interval.remove()
+    if (interval)
+      interval.remove()
   }
 
   function pause() {
     state.isRunning = false
-    if (interval) interval.remove()
+    if (interval)
+      interval.remove()
   }
 
-  function restart(newExpiryTimestamp: number = expiry, newAutoStart = true) {
+  function restart(newExpiryTimestamp: number | Ref<number> = expiryValue, newAutoStart = true) {
+    const newExpiryValue = unref(newExpiryTimestamp)
     pause()
-    state.delay = getDelayFromExpiryTimestamp(newExpiryTimestamp)
+    state.delay = getDelayFromExpiryTimestamp(newExpiryValue)
     state.didStart = newAutoStart
     state.isExpired = false
-    state.expiryTimestamp = newExpiryTimestamp
-    state.seconds = Time.getSecondsFromExpiry(newExpiryTimestamp)
-    if (state.didStart) start()
+    state.expiryTimestamp = newExpiryValue
+    state.seconds = Time.getSecondsFromExpiry(newExpiryValue)
+    if (state.didStart)
+      start()
   }
 
   function resume() {
     const time = new Date()
     const newExpiryTimestamp = time.setMilliseconds(
-      time.getMilliseconds() + state.seconds * 1000
+      time.getMilliseconds() + state.seconds * 1000,
     )
     restart(newExpiryTimestamp)
   }
@@ -83,14 +91,23 @@ export const useTimer = (expiry = 60, autoStart = true): UseTimer => {
             _handleExpire()
           }
         },
-        state.isRunning ? state.delay : null
+        state.isRunning ? state.delay : null,
       )
-    } else {
+    }
+    else {
       resume()
     }
   }
 
-  restart(expiry, autoStart)
+  restart(expiryValue, autoStartValue)
+
+  // Watch for changes if expiry is a ref
+  if (typeof expiry === 'object' && 'value' in expiry) {
+    watch(expiry, (newExpiry) => {
+      restart(newExpiry, state.isRunning)
+    })
+  }
+
   return {
     ...Time.getTimeFromSeconds(toRef(state, 'seconds')),
     start,

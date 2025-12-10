@@ -1,10 +1,16 @@
-import path from 'path'
-import ts from 'rollup-plugin-typescript2'
-import replace from '@rollup/plugin-replace'
-import resolve from '@rollup/plugin-node-resolve'
+import { createRequire } from 'node:module'
+import path from 'node:path'
+import { env, exit } from 'node:process'
+import { fileURLToPath } from 'node:url'
 import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
+import ts from 'rollup-plugin-typescript2'
 
+const require = createRequire(import.meta.url)
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const pkg = require('./package.json')
+
 const name = pkg.name
 
 const banner = `/*!
@@ -23,15 +29,15 @@ const outputConfigs = {
     file: pkg.module,
     format: `es`,
   },
-  cjs: {
+  'cjs': {
     file: pkg.main,
     format: `cjs`,
   },
-  global: {
+  'global': {
     file: pkg.unpkg,
     format: `iife`,
   },
-  esm: {
+  'esm': {
     file: pkg.browser || pkg.module.replace('bundler', 'browser'),
     format: `es`,
   },
@@ -41,14 +47,15 @@ const allFormats = Object.keys(outputConfigs)
 // in vue-router there are not that many
 const packageFormats = allFormats
 const packageConfigs = packageFormats.map(format =>
-  createConfig(format, outputConfigs[format])
+  createConfig(format, outputConfigs[format]),
 )
 
 // only add the production ready if we are bundling the options
-packageFormats.forEach(format => {
+packageFormats.forEach((format) => {
   if (format === 'cjs') {
     packageConfigs.push(createProductionConfig(format))
-  } else if (format === 'global') {
+  }
+  else if (format === 'global') {
     packageConfigs.push(createMinifiedConfig(format))
   }
 })
@@ -58,10 +65,10 @@ export default packageConfigs
 function createConfig(format, output, plugins = []) {
   if (!output) {
     console.log(require('chalk').yellow(`invalid format: "${format}"`))
-    process.exit(1)
+    exit(1)
   }
 
-  output.sourcemap = !!process.env.SOURCE_MAP
+  output.sourcemap = !!env.SOURCE_MAP
   output.banner = banner
   output.externalLiveBindings = false
   output.globals = {
@@ -76,7 +83,8 @@ function createConfig(format, output, plugins = []) {
   const isNodeBuild = format === 'cjs'
   const isBundlerESMBuild = /esm-bundler/.test(format)
 
-  if (isGlobalBuild) output.name = 'VueTimerHook'
+  if (isGlobalBuild)
+    output.name = 'VueTimerHook'
 
   const shouldEmitDeclarations = !hasTSChecked
 
@@ -118,7 +126,7 @@ function createConfig(format, output, plugins = []) {
         // isBrowserBuild?
         isGlobalBuild || isRawESMBuild || isBundlerESMBuild,
         isGlobalBuild,
-        isNodeBuild
+        isNodeBuild,
       ),
       ...nodePlugins,
       ...plugins,
@@ -137,16 +145,14 @@ function createReplacePlugin(
   isBundlerESMBuild,
   isBrowserBuild,
   isGlobalBuild,
-  isNodeBuild
+  isNodeBuild,
 ) {
   const replacements = {
-    __COMMIT__: `"${process.env.COMMIT}"`,
+    __COMMIT__: `"${env.COMMIT}"`,
     __VERSION__: `"${pkg.version}"`,
     __DEV__: isBundlerESMBuild
-      ? // preserve to be handled by bundlers
-        `(process.env.NODE_ENV !== 'production')`
-      : // hard coded dev/prod builds
-        JSON.stringify(!isProduction),
+      ? `(env.NODE_ENV !== 'production')` // preserve to be handled by bundlers
+      : JSON.stringify(!isProduction), // hard coded dev/prod builds
     // this is only used during tests
     __TEST__: 'false',
     // If the build is expected to run directly in the browser (global / esm builds)
@@ -161,10 +167,10 @@ function createReplacePlugin(
     __NODE_JS__: JSON.stringify(isNodeBuild),
   }
   // allow inline overrides like
-  //__RUNTIME_COMPILE__=true yarn build
-  Object.keys(replacements).forEach(key => {
-    if (key in process.env) {
-      replacements[key] = process.env[key]
+  // __RUNTIME_COMPILE__=true yarn build
+  Object.keys(replacements).forEach((key) => {
+    if (key in env) {
+      replacements[key] = env[key]
     }
   })
   return replace({
@@ -190,12 +196,12 @@ function createMinifiedConfig(format) {
     },
     [
       terser({
-        module: /^esm/.test(format),
+        module: format.startsWith('esm'),
         compress: {
           ecma: 2015,
           pure_getters: true,
         },
       }),
-    ]
+    ],
   )
 }

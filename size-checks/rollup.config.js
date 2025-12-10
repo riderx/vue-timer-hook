@@ -1,9 +1,9 @@
-import path from 'path'
-import ts from 'rollup-plugin-typescript2'
-import replace from '@rollup/plugin-replace'
-import resolve from '@rollup/plugin-node-resolve'
+import path from 'node:path'
 import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 import { terser } from 'rollup-plugin-terser'
+import ts from 'rollup-plugin-typescript2'
 
 /** @type {import('rollup').RollupOptions} */
 const config = {
@@ -17,17 +17,17 @@ const config = {
     replace({
       preventAssignment: true,
       values: {
-        __DEV__: 'false',
+        '__DEV__': 'false',
         // this is only used during tests
-        __TEST__: 'false',
+        '__TEST__': 'false',
         // If the build is expected to run directly in the browser (global / esm builds)
-        __BROWSER__: 'true',
+        '__BROWSER__': 'true',
         // is targeting bundlers?
-        __BUNDLER__: 'false',
-        __GLOBAL__: 'false',
+        '__BUNDLER__': 'false',
+        '__GLOBAL__': 'false',
         // is targeting Node (SSR)?
-        __NODE_JS__: 'false',
-        __VUE_PROD_DEVTOOLS__: 'false',
+        '__NODE_JS__': 'false',
+        '__VUE_PROD_DEVTOOLS__': 'false',
         'process.env.NODE_ENV': JSON.stringify('production'),
       },
     }),

@@ -10,24 +10,23 @@ jobs:
   bump-version:
     if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
     runs-on: ubuntu-latest
-    name: "Bump version and create changelog with standard version"
+    name: Bump version and create changelog with standard version
     steps:
       - name: Check out
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           token: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
-      - uses: pnpm/action-setup@v2
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 7
+          bun-version: latest
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 22
       - name: Install dependencies
         id: install_code
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
       - name: Git config
         run: |
           git config --local user.name "github-actions[bot]"
@@ -47,17 +46,16 @@ jobs:
   create-cache:
     if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
     runs-on: ubuntu-latest
-    name: "Create global cache on main branch"
+    name: Create global cache on main branch
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
         with:
-          version: 7
+          bun-version: latest
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 22
       - name: Install dependencies
         id: install_code
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile

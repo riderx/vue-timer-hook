@@ -1,6 +1,7 @@
 // necessary for webpack
-///<reference path="../src/global.d.ts"/>
-import { createApp, ComponentPublicInstance } from 'vue'
+/// <reference path="../src/global.d.ts"/>
+import type { ComponentPublicInstance } from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
 
 declare global {

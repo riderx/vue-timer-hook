@@ -1,30 +1,30 @@
 {
-  "include": ["src/global.d.ts", "src/**/*.ts", "__tests__/**/*.ts"],
   "compilerOptions": {
+
+    "target": "ES2023",
+
+    "jsx": "preserve",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "experimentalDecorators": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "outDir": "dist",
-    "sourceMap": false,
-    "noEmit": true,
-
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "types": ["node", "vite/client"],
     "allowJs": false,
-
-    "noUnusedLocals": true,
+    "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "noImplicitThis": true,
     "noImplicitReturns": true,
-    "strict": true,
 
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noEmit": true,
+    "outDir": "dist",
     "removeComments": false,
-    "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "types": ["jest", "node", "vite/client"]
-  }
+    "sourceMap": false,
+    "esModuleInterop": true
+  },
+  "include": ["src/global.d.ts", "src/**/*.ts", "__tests__/**/*.ts"]
 }
