@@ -57,8 +57,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.6.1",
-    "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/cli": "^21.0.0",
+    "@commitlint/config-conventional": "^21.0.0",
     "@microsoft/api-extractor": "^7.48.2",
     "@rollup/plugin-alias": "^6.0.0",
     "@rollup/plugin-commonjs": "^29.0.0",
