@@ -90,7 +90,7 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
-    "vite": "^7.2.7",
+    "vite": "^8.0.0",
     "vitest": "^4.0.15",
     "vue": "^3.5.13",
     "vue-tsc": "^3.1.8",
