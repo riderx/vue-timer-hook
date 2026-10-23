@@ -1,80 +1,135 @@
-<script setup>
+<script setup lang="ts">
 import UseStopwatchDemo from './components/UseStopwatchDemo.vue'
 import UseTimeDemo from './components/UseTimeDemo.vue'
 import UseTimerDemo from './components/UseTimerDemo.vue'
 import UseTimerWaitStartDemo from './components/UseTimerWaitStartDemo.vue'
 
-const time = new Date().setSeconds(new Date().getSeconds() + 600)
+const expiryTimestamp = Date.now() + 10 * 60 * 1000
 </script>
 
 <template>
-  <div>
-    <div class="header-bg">
-      <div class="container">
-        <div class="header">
-          <h1 class="h1">
-            vue-timer-hook
-          </h1>
-          <div>
-            <iframe src="https://ghbtns.com/github-btn.html?user=riderx&repo=vue-timer-hook&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160" height="30" title="GitHub" />
-            <iframe src="https://ghbtns.com/github-btn.html?user=riderx&repo=vue-timer-hook&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="126" height="30" title="GitHub" />
-          </div>
+  <div class="page">
+    <header class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <p class="eyebrow">
+            Vue 3 composition API
+          </p>
+          <h1>vue-timer-hook</h1>
+          <p class="lead">
+            Countdown timers, stopwatches, and live clocks with reactive refs.
+          </p>
+        </div>
+        <div class="gh-buttons">
+          <iframe src="https://ghbtns.com/github-btn.html?user=Cap-go&repo=vue-timer-hook&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160" height="30" title="GitHub stars" />
+          <iframe src="https://ghbtns.com/github-btn.html?user=Cap-go&repo=vue-timer-hook&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="126" height="30" title="GitHub forks" />
         </div>
       </div>
-    </div>
-    <div class="container">
-      <p>
-        Vue timer hook is a custom  <a href="https://v3.vuejs.org/guide/composition-api-introduction.html" target="_blank">composition api</a> module built to handle timer, stopwatch, and time logic/state in your vue component.
-      </p>
-      <UseTimerDemo :expiry-timestamp="time" />
-      <UseTimerWaitStartDemo :expiry-timestamp="time" />
-      <div class="separator" />
-      <UseStopwatchDemo />
-      <div class="separator" />
-      <UseTimeDemo />
-    </div>
+    </header>
+
+    <main class="wrap content">
+      <section class="card">
+        <UseTimerDemo :expiry-timestamp="expiryTimestamp" />
+      </section>
+      <section class="card">
+        <UseTimerWaitStartDemo :expiry-timestamp="expiryTimestamp" />
+      </section>
+      <section class="card">
+        <UseStopwatchDemo />
+      </section>
+      <section class="card">
+        <UseTimeDemo />
+      </section>
+    </main>
   </div>
 </template>
 
 <style>
-  html,
+html,
 body {
   margin: 0;
-  font-family: Arial;
-  text-align: left;
-  color: #404549;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: #1e293b;
+  background: #f1f5f9;
+  line-height: 1.5;
 }
-h2 {
-  margin-top: 20px;
+
+a {
+  color: #0f766e;
 }
 </style>
 
 <style scoped>
-.container {
-  width: 1170px;
-  margin-left: auto;
-  margin-right: auto;
+.page {
+  min-height: 100vh;
 }
 
-.header-bg {
-  background-color: #404549;
+.wrap {
+  width: min(960px, 100% - 2rem);
+  margin-inline: auto;
 }
-.header {
+
+.hero {
+  background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+  color: #f8fafc;
+  padding: 2.5rem 0 2rem;
+}
+
+.hero-inner {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: center;
-}
-.header h1 {
-  margin: 20px 0;
 }
 
-.h1 {
-  color: white;
+.eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
 }
 
-.separator {
-  height: 0px;
-  margin-top: 30px;
-  border: dashed 2px #404549;
+h1 {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+}
+
+.lead {
+  margin: 0.75rem 0 0;
+  max-width: 36rem;
+  opacity: 0.95;
+}
+
+.gh-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.content {
+  padding: 1.5rem 0 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem 1.5rem;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 8%);
+}
+
+.card :deep(h2) {
+  margin-top: 0;
+  font-size: 1.25rem;
 }
 </style>

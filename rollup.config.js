@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
-import ts from 'rollup-plugin-typescript2'
+import esbuild from 'rollup-plugin-esbuild'
 
 const require = createRequire(import.meta.url)
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
@@ -19,9 +19,6 @@ const banner = `/*!
   * @license MIT
   */`
 
-// ensure TS checks only once for each build
-let hasTSChecked = false
-
 const outputConfigs = {
   // each file name has the format: `dist/${name}.${format}.js`
   // format being a key of this object
@@ -30,7 +27,7 @@ const outputConfigs = {
     format: `es`,
   },
   'cjs': {
-    file: pkg.main,
+    file: `dist/${name}.cjs.js`,
     format: `cjs`,
   },
   'global': {
@@ -86,32 +83,20 @@ function createConfig(format, output, plugins = []) {
   if (isGlobalBuild)
     output.name = 'VueTimerHook'
 
-  const shouldEmitDeclarations = !hasTSChecked
-
-  const tsPlugin = ts({
-    check: !hasTSChecked,
+  const esbuildPlugin = esbuild({
+    target: 'es2020',
     tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-    cacheRoot: path.resolve(__dirname, 'node_modules/.rts2_cache'),
-    tsconfigOverride: {
-      compilerOptions: {
-        sourceMap: output.sourcemap,
-        declaration: shouldEmitDeclarations,
-        declarationMap: shouldEmitDeclarations,
-      },
-      exclude: ['__tests__', 'test-dts'],
-    },
   })
-  // we only need to check TS and generate declarations once for each build.
-  // it also seems to run into weird issues when checking multiple times
-  // during a single build.
-  hasTSChecked = true
 
   const external = ['vue']
   if (!isGlobalBuild) {
     external.push('@vue/devtools-api')
   }
 
-  const nodePlugins = [resolve(), commonjs()]
+  const nodePlugins = [
+    resolve(),
+    commonjs(),
+  ]
 
   return {
     input: `src/index.ts`,
@@ -119,7 +104,7 @@ function createConfig(format, output, plugins = []) {
     // used alone.
     external,
     plugins: [
-      tsPlugin,
+      esbuildPlugin,
       createReplacePlugin(
         isProductionBuild,
         isBundlerESMBuild,
@@ -187,7 +172,7 @@ function createProductionConfig(format) {
 }
 
 function createMinifiedConfig(format) {
-  const { terser } = require('rollup-plugin-terser')
+  const terser = require('@rollup/plugin-terser').default
   return createConfig(
     format,
     {

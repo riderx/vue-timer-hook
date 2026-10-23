@@ -1,14 +1,18 @@
 ## vue-timer-hook
 
-Vue timer hook is a custom [vue 3 hook](https://vue.org/docs/hooks-intro.html), built to handle timer, stopwatch, and time logic/state in your vue component.
+Vue 3 composition API hooks for countdown timers, stopwatches, and live clock state.
 
-1. `useTimer`: Timers (countdown timer)
-2. `useStopwatch`: Stopwatch (count up timer)
-3. `useTime`: Time (return current time)
+| Hook           | Purpose                                           |
+| -------------- | ------------------------------------------------- |
+| `useTimer`     | Countdown to an expiry timestamp (ms since epoch) |
+| `useStopwatch` | Count up from an optional offset                  |
+| `useTime`      | Current local time, 24h or 12h format             |
+
+[Live demo](https://cap-go.github.io/vue-timer-hook/)
 
 ---
 
-## Setup
+## Install
 
 ```bash
 bun add vue-timer-hook
@@ -20,175 +24,171 @@ yarn add vue-timer-hook
 npm install vue-timer-hook
 ```
 
+Peer dependency: `vue` ^3.2.0.
+
 ---
 
-## `useTimer` - [Demo](https://riderx.github.io/vue-timer-hook/)
+## `useTimer`
+
+Counts down to `expiryTimestamp` (a **number**: milliseconds since Unix epoch, same as `Date.now()`).
 
 ### Example
 
-```html
-<template>
-  <div>
-    <h1>vue-timer-hook</h1>
-    <p>Timer Demo</p>
-    <div>
-      <span>{{timer.days}}</span>:<span>{{timer.hours}}</span>:<span>{{timer.minutes}}</span>:<span
-        >{{timer.seconds}}</span
-      >
-    </div>
-    <p>{{timer.isRunning ? 'Running' : 'Not running'}}</p>
-    <button @click="timer.start()">Start</button>
-    <button @click="timer.pause()">Pause</button>
-    <button @click="timer.resume()">Resume</button>
-    <button @click="restartFive()">Restart</button>
-  </div>
-</template>
-
+```vue
 <script setup lang="ts">
-  import { watchEffect, onMounted } from 'vue'
-  import { useTimer } from 'vue-timer-hook'
+import { watchEffect } from 'vue'
+import { useTimer } from 'vue-timer-hook'
 
-  const time = new Date()
-  time.setSeconds(time.getSeconds() + 600) // 10 minutes timer
-  const timer = useTimer(time)
-  const restartFive = () => {
-    // Restarts to 5 minutes timer
-    const time = new Date()
-    time.setSeconds(time.getSeconds() + 300)
-    timer.restart(time)
+const expiryTimestamp = Date.now() + 10 * 60 * 1000
+const timer = useTimer(expiryTimestamp)
+
+function restartFive() {
+  timer.restart(Date.now() + 5 * 60 * 1000)
+}
+
+watchEffect(() => {
+  if (timer.isExpired.value) {
+    console.warn('Timer expired')
   }
-  onMounted(() => {
-    watchEffect(async () => {
-      if (timer.isExpired.value) {
-        console.warn('IsExpired')
-      }
-    })
-  })
+})
 </script>
+
+<template>
+  <div>
+    <p>
+      {{ timer.days }}:{{ timer.hours }}:{{ timer.minutes }}:{{ timer.seconds }}
+    </p>
+    <p>{{ timer.isRunning ? 'Running' : 'Paused' }}</p>
+    <button type="button" @click="timer.pause()">
+      Pause
+    </button>
+    <button type="button" @click="timer.resume()">
+      Resume
+    </button>
+    <button type="button" @click="restartFive()">
+      Restart 5 min
+    </button>
+  </div>
+</template>
 ```
 
-### Settings
+### Options
 
-| key             | Type              | Required | Description                                                                        |
-| --------------- | ----------------- | -------- | ---------------------------------------------------------------------------------- |
-| expiryTimestamp | number(timestamp) | YES      | this will define for how long the timer will be running                            |
-| autoStart       | boolean           | No       | flag to decide if timer should start automatically, by default it is set to `true` |
+| Argument          | Type                        | Default                                       | Description                     |
+| ----------------- | --------------------------- | --------------------------------------------- | ------------------------------- |
+| `expiryTimestamp` | `number` or `Ref<number>`   | `60` (invalid default; pass a real timestamp) | When the countdown reaches zero |
+| `autoStart`       | `boolean` or `Ref<boolean>` | `true`                                        | Start ticking immediately       |
 
-### Values
+### Return value
 
-| key       | Type     | Description                                                                                                                                                                                                                                                      |
-| --------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| seconds   | number   | seconds value                                                                                                                                                                                                                                                    |
-| minutes   | number   | minutes value                                                                                                                                                                                                                                                    |
-| hours     | number   | hours value                                                                                                                                                                                                                                                      |
-| days      | number   | days value                                                                                                                                                                                                                                                       |
-| isRunning | boolean  | flag to indicate if timer is running or not                                                                                                                                                                                                                      |
-| pause     | function | function to be called to pause timer                                                                                                                                                                                                                             |
-| start     | function | function if called after pause the timer will continue based on original expiryTimestamp                                                                                                                                                                         |
-| resume    | function | function if called after pause the timer will continue countdown from last paused state                                                                                                                                                                          |
-| restart   | function | function to restart timer with new expiryTimestamp, accept 2 arguments first is the new `expiryTimestamp` of type number(timestamp) and second is `autoStart` of type boolean to decide if it should automatically start after restart or not, default is `true` |
+| Property                              | Type                                        | Description                            |
+| ------------------------------------- | ------------------------------------------- | -------------------------------------- |
+| `seconds`, `minutes`, `hours`, `days` | `Ref<number>`                               | Remaining time parts                   |
+| `isRunning`                           | `Ref<boolean>`                              | Timer is actively ticking              |
+| `isExpired`                           | `Ref<boolean>`                              | Countdown finished                     |
+| `start()`                             | `() => void`                                | Start or continue from expiry          |
+| `pause()`                             | `() => void`                                | Pause                                  |
+| `resume()`                            | `() => void`                                | Resume from remaining time after pause |
+| `restart(expiry?, autoStart?)`        | `(number \| Ref<number>, boolean?) => void` | Reset expiry and optionally auto-start |
 
 ---
 
-## `useStopwatch` - [Demo](https://riderx.github.io/vue-timer-hook/)
+## `useStopwatch`
+
+Counts up from an optional offset in seconds.
 
 ### Example
 
-```html
-<template>
-  <div>
-    <h1>vue-timer-hook</h1>
-    <p>Stopwatch Demo</p>
-    <div>
-      <span>{{stopwatch.days}}</span>:<span>{{stopwatch.hours}}</span>:<span>{{stopwatch.minutes}}</span>:<span
-        >{{stopwatch.seconds}}</span
-      >
-    </div>
-    <p>{{stopwatch.isRunning ? 'Running' : 'Not running'}}</p>
-    <button @click="stopwatch.start()">Start</button>
-    <button @click="stopwatch.pause()">Pause</button>
-    <button @click="stopwatch.reset()">Reset</button>
-  </div>
-</template>
-
+```vue
 <script setup lang="ts">
-  import { defineComponent } from 'vue'
-  import { useStopwatch } from 'vue-timer-hook'
+import { useStopwatch } from 'vue-timer-hook'
 
-  const autoStart = true
-  const stopwatch = useStopwatch(autoStart)
+const stopwatch = useStopwatch(0, true)
 </script>
+
+<template>
+  <div>
+    <p>
+      {{ stopwatch.hours }}:{{ stopwatch.minutes }}:{{ stopwatch.seconds }}
+    </p>
+    <button type="button" @click="stopwatch.pause()">
+      Pause
+    </button>
+    <button type="button" @click="stopwatch.start()">
+      Start
+    </button>
+    <button type="button" @click="stopwatch.reset()">
+      Reset
+    </button>
+  </div>
+</template>
 ```
 
-### Settings
+### Options
 
-| key             | Type    | Required | Description                                                                                                                                                                                                                                                  |
-| --------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| autoStart       | boolean | No       | if set to `true` stopwatch will auto start, by default it is set to `false`                                                                                                                                                                                  |
-| offsetTimestamp | number  | No       | this will define the initial stopwatch offset example: `const stopwatchOffset = new Date(); stopwatchOffset.setSeconds(stopwatchOffset.getSeconds() + 300);` this will result in a 5 minutes offset and stopwatch will start from 0:0:5:0 instead of 0:0:0:0 |
+| Argument          | Type                        | Default | Description             |
+| ----------------- | --------------------------- | ------- | ----------------------- |
+| `offsetTimestamp` | `number` or `Ref<number>`   | `60`    | Initial elapsed seconds |
+| `autoStart`       | `boolean` or `Ref<boolean>` | `true`  | Start immediately       |
 
-### Values
+### Return value
 
-| key       | Type     | Description                                                                                                                                                                                                                                                                                                                                                       |
-| --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| seconds   | number   | seconds value                                                                                                                                                                                                                                                                                                                                                     |
-| minutes   | number   | minutes value                                                                                                                                                                                                                                                                                                                                                     |
-| hours     | number   | hours value                                                                                                                                                                                                                                                                                                                                                       |
-| days      | number   | days value                                                                                                                                                                                                                                                                                                                                                        |
-| isRunning | boolean  | flag to indicate if stopwatch is running or not                                                                                                                                                                                                                                                                                                                   |
-| start     | function | function to be called to start/resume stopwatch                                                                                                                                                                                                                                                                                                                   |
-| pause     | function | function to be called to pause stopwatch                                                                                                                                                                                                                                                                                                                          |
-| reset     | function | function to be called to reset stopwatch to 0:0:0:0, you can also pass offset parameter to this function to reset stopwatch with offset, similar to how `offsetTimestamp` will offset the initial stopwatch time, this function will accept also a second argument which will decide if stopwatch should automatically start after reset or not default is `true` |
+| Property                              | Type                                        | Description                             |
+| ------------------------------------- | ------------------------------------------- | --------------------------------------- |
+| `seconds`, `minutes`, `hours`, `days` | `Ref<number>`                               | Elapsed time parts                      |
+| `isRunning`                           | `Ref<boolean>`                              | Stopwatch is ticking                    |
+| `start()`                             | `() => void`                                | Start or resume                         |
+| `pause()`                             | `() => void`                                | Pause                                   |
+| `reset(offset?, autoStart?)`          | `(number \| Ref<number>, boolean?) => void` | Reset offset; default auto-start `true` |
 
 ---
 
-## `useTime` - [Demo](https://riderx.github.io/vue-timer-hook/)
+## `useTime`
+
+Live clock updated every second.
 
 ### Example
 
-```html
-<template>
-  <div>
-    <h1>vue-timer-hook</h1>
-    <p>Current Time Demo</p>
-    <div>
-      <span>{{time.hours}}</span>:<span>{{time.minutes}}</span>:<span>{{time.seconds}}</span><span>{{time.ampm}}</span>
-    </div>
-  </div>
-</template>
+```vue
+<script setup lang="ts">
+import { useTime } from 'vue-timer-hook'
 
-<script lang="ts">
-  import { defineComponent } from 'vue'
-  import { useTime } from 'vue-timer-hook'
-
-  export default defineComponent({
-    name: 'Home',
-    setup() {
-      const format = '12-hour'
-      const time = useTime(format)
-      return {
-        time,
-      }
-    },
-  })
+const time = useTime('12-hour')
 </script>
+
+<template>
+  <p>{{ time.hours }}:{{ time.minutes }}:{{ time.seconds }}{{ time.ampm }}</p>
+</template>
 ```
 
-### Settings
+### Options
 
-| key    | Type   | Required | Description                                           |
-| ------ | ------ | -------- | ----------------------------------------------------- |
-| format | string | No       | if set to `12-hour` time will be formatted with am/pm |
+| Argument | Type                                   | Default     | Description    |
+| -------- | -------------------------------------- | ----------- | -------------- |
+| `format` | `'12-hour' \| '24-hour'` or `Ref<...>` | `'24-hour'` | Display format |
 
-### Values
+### Return value
 
-| key     | Type   | Description                             |
-| ------- | ------ | --------------------------------------- |
-| seconds | number | seconds value                           |
-| minutes | number | minutes value                           |
-| hours   | number | hours value                             |
-| ampm    | string | am/pm value if `12-hour` format is used |
+| Property                      | Type          | Description                                          |
+| ----------------------------- | ------------- | ---------------------------------------------------- |
+| `seconds`, `minutes`, `hours` | `Ref<number>` | Current time parts                                   |
+| `ampm`                        | `Ref<string>` | `'am'` / `'pm'` when using 12-hour format, else `''` |
+
+---
+
+## Development
+
+```bash
+bun install
+bun run dev          # demo site
+bun run build        # library dist (ESM + CJS + IIFE)
+bun run build:dts    # roll up .d.ts
+bun run verify:build # build + types + dist smoke tests
+bun run test         # typecheck + unit tests
+```
+
+---
 
 ### Credit
 
-Inspired by [react-timer-hook](https://github.com/amrlabib/react-timer-hook)
+Inspired by [react-timer-hook](https://github.com/amrlabib/react-timer-hook).

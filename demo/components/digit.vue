@@ -13,11 +13,15 @@ const props = defineProps({
 })
 const leftDigit = computed(() => {
   const digit = props.digit ?? 0
-  return digit >= 10 ? digit.toString()[0] : '0'
+  return digit >= 10
+    ? digit.toString()[0]
+    : '0'
 })
 const rightDigit = computed(() => {
   const digit = props.digit ?? 0
-  return digit >= 10 ? digit.toString()[1] : digit.toString()
+  return digit >= 10
+    ? digit.toString()[1]
+    : digit.toString()
 })
 </script>
 

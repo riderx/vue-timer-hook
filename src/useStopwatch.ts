@@ -4,7 +4,7 @@ import { ref, unref, watch } from 'vue'
 import { useInterval } from './hooks'
 import { Time } from './utils'
 
-const epochSeconds = () => new Date().getTime()
+const epochSeconds = () => Date.now()
 export interface ResUseStopwatch {
   seconds: Ref<number>
   minutes: Ref<number>

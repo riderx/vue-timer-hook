@@ -10,11 +10,16 @@ export default defineConfig({
   base: '/vue-timer-hook/',
   build: {
     outDir: '../demo_dist',
+    emptyOutDir: true,
     rollupOptions: {
-      plugins: [analyze()],
+      plugins: [
+        analyze(),
+      ],
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+  ],
   define: {
     __DEV__: JSON.stringify(!env.prod),
     __BROWSER__: 'true',

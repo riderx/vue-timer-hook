@@ -1,16 +1,17 @@
-name: Build source code and test it
+name: CI
 
 on:
   push:
     branches:
+      - main
       - renovate/**
   pull_request:
     branches: [main]
 
 jobs:
-  web:
+  test:
     runs-on: ubuntu-latest
-    name: Build code and test
+    name: Lint, build, and test
     steps:
       - name: Check out
         uses: actions/checkout@v7
@@ -22,17 +23,20 @@ jobs:
         with:
           node-version: 24
       - name: Install dependencies
-        id: install_code
         run: bun install --frozen-lockfile
       - name: Lint
-        id: lint_code
         run: bun run lint
-      - name: Build
-        id: build_code
+      - name: Typecheck
+        run: bun run test:types
+      - name: Build library
         run: bun run build
-      - name: Build Ts
-        id: build_code_type
+      - name: Build declarations
         run: bun run build:dts
-      - name: Test
-        id: test_code
-        run: bun run test
+      - name: Dist output checks
+        run: bun run test:dist
+      - name: DTS consumer check
+        run: bun run test:dts
+      - name: Unit tests
+        run: bun run test:unit
+      - name: Build demo
+        run: bun run build:demo

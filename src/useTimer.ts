@@ -13,7 +13,9 @@ function getDelayFromExpiryTimestamp(expiryTimestamp: number) {
 
   const seconds = Time.getSecondsFromExpiry(expiryTimestamp)
   const extraMilliSeconds = Math.floor((seconds - Math.floor(seconds)) * 1000)
-  return extraMilliSeconds > 0 ? extraMilliSeconds : DEFAULT_DELAY
+  return extraMilliSeconds > 0
+    ? extraMilliSeconds
+    : DEFAULT_DELAY
 }
 export interface UseTimer {
   seconds: Ref<number>
