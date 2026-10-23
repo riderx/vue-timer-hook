@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.111](https://github.com/riderx/vue-timer-hook/compare/v1.0.110...v1.0.111) (2026-10-23)
+
 ### [1.0.110](https://github.com/riderx/vue-timer-hook/compare/v1.0.109...v1.0.110) (2026-10-23)
 
 ### [1.0.109](https://github.com/riderx/vue-timer-hook/compare/v1.0.108...v1.0.109) (2026-10-19)
