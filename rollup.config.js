@@ -165,7 +165,9 @@ function createReplacePlugin(
 }
 
 function createProductionConfig(format) {
-  const extension = format === 'cjs' ? 'cjs' : 'js'
+  const extension = format === 'cjs'
+    ? 'cjs'
+    : 'js'
   return createConfig(format, {
     file: `dist/${name}.${format}.prod.${extension}`,
     format: outputConfigs[format].format,

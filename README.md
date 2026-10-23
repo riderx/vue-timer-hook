@@ -40,14 +40,24 @@ import { watchEffect } from 'vue'
 import { useTimer } from 'vue-timer-hook'
 
 const expiryTimestamp = Date.now() + 10 * 60 * 1000
-const timer = useTimer(expiryTimestamp)
+const {
+  days,
+  hours,
+  minutes,
+  seconds,
+  isRunning,
+  isExpired,
+  pause,
+  resume,
+  restart,
+} = useTimer(expiryTimestamp)
 
 function restartFive() {
-  timer.restart(Date.now() + 5 * 60 * 1000)
+  restart(Date.now() + 5 * 60 * 1000)
 }
 
 watchEffect(() => {
-  if (timer.isExpired.value) {
+  if (isExpired.value) {
     console.warn('Timer expired')
   }
 })
@@ -55,14 +65,12 @@ watchEffect(() => {
 
 <template>
   <div>
-    <p>
-      {{ timer.days }}:{{ timer.hours }}:{{ timer.minutes }}:{{ timer.seconds }}
-    </p>
-    <p>{{ timer.isRunning ? 'Running' : 'Paused' }}</p>
-    <button type="button" @click="timer.pause()">
+    <p>{{ days }}:{{ hours }}:{{ minutes }}:{{ seconds }}</p>
+    <p>{{ isRunning ? 'Running' : 'Paused' }}</p>
+    <button type="button" @click="pause()">
       Pause
     </button>
-    <button type="button" @click="timer.resume()">
+    <button type="button" @click="resume()">
       Resume
     </button>
     <button type="button" @click="restartFive()">
@@ -103,21 +111,19 @@ Counts up from an optional offset in seconds.
 <script setup lang="ts">
 import { useStopwatch } from 'vue-timer-hook'
 
-const stopwatch = useStopwatch(0, true)
+const { hours, minutes, seconds, start, pause, reset } = useStopwatch(0, true)
 </script>
 
 <template>
   <div>
-    <p>
-      {{ stopwatch.hours }}:{{ stopwatch.minutes }}:{{ stopwatch.seconds }}
-    </p>
-    <button type="button" @click="stopwatch.pause()">
+    <p>{{ hours }}:{{ minutes }}:{{ seconds }}</p>
+    <button type="button" @click="pause()">
       Pause
     </button>
-    <button type="button" @click="stopwatch.start()">
+    <button type="button" @click="start()">
       Start
     </button>
-    <button type="button" @click="stopwatch.reset()">
+    <button type="button" @click="reset()">
       Reset
     </button>
   </div>
@@ -153,11 +159,11 @@ Live clock updated every second.
 <script setup lang="ts">
 import { useTime } from 'vue-timer-hook'
 
-const time = useTime('12-hour')
+const { hours, minutes, seconds, ampm } = useTime('12-hour')
 </script>
 
 <template>
-  <p>{{ time.hours }}:{{ time.minutes }}:{{ time.seconds }}{{ time.ampm }}</p>
+  <p>{{ hours }}:{{ minutes }}:{{ seconds }}{{ ampm }}</p>
 </template>
 ```
 

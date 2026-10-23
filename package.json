@@ -24,8 +24,8 @@
   "types": "dist/vue-timer-hook.d.ts",
   "files": [
     "README.md",
-    "dist/*.js",
     "dist/*.cjs",
+    "dist/*.js",
     "dist/vue-timer-hook.d.ts",
     "vetur/attributes.json",
     "vetur/tags.json"
