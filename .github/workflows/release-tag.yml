@@ -24,12 +24,9 @@ jobs:
       - name: Test
         id: test_code
         run: bun run test
-      - name: Build
+      - name: Build and verify dist
         id: build_code
-        run: bun run build
-      - name: Build TS
-        id: build_type
-        run: bun run build:dts
+        run: bun run verify:build
       - uses: JS-DevTools/npm-publish@v4
         with:
           access: public

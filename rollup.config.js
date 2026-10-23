@@ -27,7 +27,7 @@ const outputConfigs = {
     format: `es`,
   },
   'cjs': {
-    file: `dist/${name}.cjs.js`,
+    file: `dist/${name}.cjs`,
     format: `cjs`,
   },
   'global': {
@@ -165,8 +165,9 @@ function createReplacePlugin(
 }
 
 function createProductionConfig(format) {
+  const extension = format === 'cjs' ? 'cjs' : 'js'
   return createConfig(format, {
-    file: `dist/${name}.${format}.prod.js`,
+    file: `dist/${name}.${format}.prod.${extension}`,
     format: outputConfigs[format].format,
   })
 }

@@ -14,10 +14,10 @@
     ".": {
       "types": "./dist/vue-timer-hook.d.ts",
       "import": "./dist/vue-timer-hook.esm-bundler.js",
-      "require": "./dist/vue-timer-hook.cjs.js"
+      "require": "./dist/vue-timer-hook.cjs"
     }
   },
-  "main": "dist/vue-timer-hook.cjs.js",
+  "main": "dist/vue-timer-hook.cjs",
   "module": "dist/vue-timer-hook.esm-bundler.js",
   "unpkg": "dist/vue-timer-hook.global.js",
   "jsdelivr": "dist/vue-timer-hook.global.js",
@@ -25,6 +25,7 @@
   "files": [
     "README.md",
     "dist/*.js",
+    "dist/*.cjs",
     "dist/vue-timer-hook.d.ts",
     "vetur/attributes.json",
     "vetur/tags.json"
@@ -46,7 +47,7 @@
     "test:unit:watch": "vitest",
     "test:ui": "vitest --ui",
     "test": "bun run test:types && bun run test:unit",
-    "test:dist": "vitest run __tests__/dist.spec.ts",
+    "test:dist": "vitest run --config vitest.dist.config.ts",
     "verify:build": "bun run build && bun run build:dts && bun run test:dist",
     "prepare": "husky install"
   },
