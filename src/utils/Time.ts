@@ -71,7 +71,7 @@ export default class Time {
 
   static getFormattedTimeFromSeconds(
     totalSeconds: Ref<number>,
-    format: '12-hour' | '24-hour',
+    format: Ref<'12-hour' | '24-hour'>,
   ): TimeAmpm {
     const {
       seconds: secondsValue,
@@ -79,14 +79,14 @@ export default class Time {
       hours,
     } = Time.getTimeFromSeconds(totalSeconds)
     const ampm = computed(() =>
-      format === '12-hour'
+      format.value === '12-hour'
         ? (hours.value >= 12
             ? 'pm'
             : 'am')
         : '',
     )
     const hoursValue = computed(() =>
-      format === '12-hour'
+      format.value === '12-hour'
         ? hours.value % 12
         : hours.value,
     )

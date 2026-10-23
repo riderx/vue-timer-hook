@@ -74,7 +74,7 @@ function createConfig(format, output, plugins = []) {
     // '@vue/devtools-api': 'VueDevtoolsApi',
   }
 
-  const isProductionBuild = /\.prod\.js$/.test(output.file)
+  const isProductionBuild = /\.prod\.(js|cjs)$/.test(output.file)
   const isGlobalBuild = format === 'global'
   const isRawESMBuild = format === 'esm'
   const isNodeBuild = format === 'cjs'

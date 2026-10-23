@@ -243,13 +243,11 @@ it('useTime with ref for format', async () => {
   expect(time.hours.value).toBe(14)
   expect(time.ampm.value).toBe('')
 
-  // Change format to 12-hour
   format.value = '12-hour'
   await nextTick()
   vi.advanceTimersByTime(10)
-  // Note: The watch updates formatValue but the return is already computed
-  // So we test that the watch is triggered by checking the ref changed
-  expect(format.value).toBe('12-hour')
+  expect(time.hours.value).toBe(2)
+  expect(time.ampm.value).toBe('pm')
 })
 
 it('useTimer delay adjustment to DEFAULT_DELAY', () => {

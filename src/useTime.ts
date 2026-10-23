@@ -29,6 +29,6 @@ export function useTime(format: '12-hour' | '24-hour' | Ref<'12-hour' | '24-hour
   }
 
   return {
-    ...Time.getFormattedTimeFromSeconds(seconds, formatValue.value),
+    ...Time.getFormattedTimeFromSeconds(seconds, formatValue),
   }
 }
