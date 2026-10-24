@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.112](https://github.com/riderx/vue-timer-hook/compare/v1.0.111...v1.0.112) (2026-10-24)
+
+
+### Bug Fixes
+
+* **build:** modernize toolchain and correct dual package outputs ([28cfac1](https://github.com/riderx/vue-timer-hook/commit/28cfac1d03adc961d80202624b2253663cda20fe))
+* **build:** use .cjs outputs and isolate dist smoke tests ([6144744](https://github.com/riderx/vue-timer-hook/commit/6144744ff53ff28fd665233191844cbb8fb84bff))
+* **ci:** address review feedback on CJS and README examples ([b317249](https://github.com/riderx/vue-timer-hook/commit/b317249355fb919ed50b45888b3c12ee0d9a0438))
+* honor production CJS builds and reactive useTime format ([2ae6eba](https://github.com/riderx/vue-timer-hook/commit/2ae6eba519abe39e4b81f6fc0421b5edb6701960))
+* **test:** track package dist smoke tests outside gitignored path ([381ceec](https://github.com/riderx/vue-timer-hook/commit/381ceec226c238e480182be5e1c4f0ab991e774f))
+
 ### [1.0.111](https://github.com/riderx/vue-timer-hook/compare/v1.0.110...v1.0.111) (2026-10-23)
 
 ### [1.0.110](https://github.com/riderx/vue-timer-hook/compare/v1.0.109...v1.0.110) (2026-10-23)
