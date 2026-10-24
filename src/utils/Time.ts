@@ -36,11 +36,13 @@ export default class Time {
   }
 
   static getSecondsFromExpiry(expiry: number, shouldRound?: boolean): number {
-    const now = new Date().getTime()
+    const now = Date.now()
     const milliSecondsDistance = expiry - now
     if (milliSecondsDistance > 0) {
       const val = milliSecondsDistance / 1000
-      return shouldRound ? Math.round(val) : val
+      return shouldRound
+        ? Math.round(val)
+        : val
     }
     return 0
   }
@@ -49,11 +51,13 @@ export default class Time {
     prevTime: number,
     shouldRound: boolean,
   ): number {
-    const now = new Date().getTime()
+    const now = Date.now()
     const milliSecondsDistance = now - prevTime
     if (milliSecondsDistance > 0) {
       const val = milliSecondsDistance / 1000
-      return shouldRound ? Math.round(val) : val
+      return shouldRound
+        ? Math.round(val)
+        : val
     }
     return 0
   }
@@ -67,7 +71,7 @@ export default class Time {
 
   static getFormattedTimeFromSeconds(
     totalSeconds: Ref<number>,
-    format: '12-hour' | '24-hour',
+    format: Ref<'12-hour' | '24-hour'>,
   ): TimeAmpm {
     const {
       seconds: secondsValue,
@@ -75,10 +79,16 @@ export default class Time {
       hours,
     } = Time.getTimeFromSeconds(totalSeconds)
     const ampm = computed(() =>
-      format === '12-hour' ? (hours.value >= 12 ? 'pm' : 'am') : '',
+      format.value === '12-hour'
+        ? (hours.value >= 12
+            ? 'pm'
+            : 'am')
+        : '',
     )
     const hoursValue = computed(() =>
-      format === '12-hour' ? hours.value % 12 : hours.value,
+      format.value === '12-hour'
+        ? hours.value % 12
+        : hours.value,
     )
 
     return {

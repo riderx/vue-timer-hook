@@ -15,5 +15,6 @@ export default antfu({
     'coverage',
     '*.min.js',
     '*.d.ts',
+    '.github/**/*.md',
   ],
 })

@@ -6,7 +6,6 @@
     "jsx": "preserve",
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "experimentalDecorators": true,
-    "baseUrl": ".",
     "rootDir": ".",
     "module": "ESNext",
     "moduleResolution": "bundler",

@@ -12,18 +12,14 @@ const props = defineProps({
 })
 const timer = useTimer(props.expiryTimestamp)
 function reload() {
-  // Restarts to 10 minutes timer
-  const time = new Date()
-  time.setSeconds(time.getSeconds() + 600)
-  timer.restart(time)
+  timer.restart(Date.now() + 10 * 60 * 1000)
 }
 
-const codeExample = `const time = new Date()
-time.setSeconds(time.getSeconds() + 600)
-const timer = useTimer(time)
+const codeExample = `const expiryTimestamp = Date.now() + 10 * 60 * 1000
+const timer = useTimer(expiryTimestamp)
 
 // Or with a ref:
-// const expiryTime = ref(Date.now() + 600000)
+// const expiryTime = ref(Date.now() + 600_000)
 // const timer = useTimer(expiryTime)`
 </script>
 
