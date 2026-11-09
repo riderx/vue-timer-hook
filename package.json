@@ -70,7 +70,7 @@
     "@rollup/plugin-terser": "^1.0.2",
     "@types/node": "^26.6.5",
     "@vitejs/plugin-vue": "^6.0.10",
-    "@vitest/coverage-v8": "5.0.5",
+    "@vitest/coverage-v8": "5.1.0",
     "@vitest/ui": "^5.0.5",
     "@vue/compiler-sfc": "^3.5.44",
     "@vue/server-renderer": "^3.5.44",
